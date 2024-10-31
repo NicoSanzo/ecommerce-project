@@ -9,21 +9,13 @@ import { FilterModelo } from "./components/FilterModelos/FilterModelos";
 
 
 
-const listadeproductos = productos.map((productos,index)=>{
- return(
-    <ProductCard 
-        key={index} 
-        imagen={productos.foto} 
-        description={productos.descripcion} 
-        price={productos.precio}
-     />
-   )
-});
+
 
 
 export const Productos = () =>{
+    
 
-    const [listadodeProductos,setListadodeproductos]=useState([]);
+    const [listadodeProductos,setListadodeproductos]=useState({data:[]});
     const [Error,setError]=useState(null);
     const [Loading,setLoading]=useState(false);
 
@@ -32,8 +24,18 @@ export const Productos = () =>{
         setError(error);
         setLoading(loading);
     }
-
-
+    /*
+    const listadeproductos = listadodeProductos.data.map((index, titulo, precio, imagen)=>{
+        return(
+           <ProductCard 
+               key={index} 
+               imagen={imagen} 
+               description={titulo} 
+               price={precio}
+            />
+          )
+       });
+    */
     return (
         <>
             <div className="principal-container">
@@ -49,9 +51,17 @@ export const Productos = () =>{
                 </div>
                 <div className="products-container">
                     {Loading==true && "loading..."}
-                    {listadeproductos.length > 0 && listadodeProductos.data}
-                    {Error && "No se pudo filtrar"}
-                    {listadeproductos}
+                    {listadodeProductos.data.length > 0 && listadodeProductos.data.map((producto) => {
+                        return(
+                            <ProductCard 
+                                key={producto.id} 
+                                imagen={producto.imagen} 
+                                description={producto.titulo} 
+                                price={producto.precio}
+                             />
+                           )
+                    })}
+                    {Error && "No se pudo filtrar"} 
                 </div>
             </div>
         </>

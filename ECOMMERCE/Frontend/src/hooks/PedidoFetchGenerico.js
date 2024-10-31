@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
-export const useFetch = (url, method = 'POST', body = null,triggerFetch ,delay=2000) => {
-    const [data, setData] = useState(null);
+export const useFetch = (url, method = 'POST', body = null,triggerFetch ,delay=0) => {
+    const [data, setData] = useState({data:[]});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -36,6 +36,7 @@ export const useFetch = (url, method = 'POST', body = null,triggerFetch ,delay=2
         fetchData();
     }
     },  [triggerFetch]);
+
 
     return { data, loading, error };
 };

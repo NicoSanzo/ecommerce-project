@@ -25,14 +25,14 @@ export const OrdenMenu = ({productosFiltrados}) =>{    //recibe como argumento u
     
     const {data, loading, error} = useFetch('api/prueba.php', 'POST',{ inputFiltrado }, inputFiltrado);  // llamado de un hook personalizado que realiza conexion asincronica, le paso la URL,el metodo,el body(en este caso una variable), y un triger que le va a indicar que se ejecuta cada vez que cambia el valor de esa variable//
     
-
+    
     useEffect(()=>{  //en este caso le paso los valores obtenidos de la consulta (data, loading,error) a  traves de la funccion ProductosFiltrados, con el objetivo de obtenerlos con otro componente
         if(loading)
-        {productosFiltrados(loading,[]);}       
+        {productosFiltrados(loading,{data:[]});}       
         else if(data) 
         {productosFiltrados(null,data);}
         else if(error) 
-        {productosFiltrados(null,[],error);}  
+        {productosFiltrados(null,{data:[]},error);}  
     },[data,inputFiltrado,error,loading]); // esto se ejecutara cada vez que cambien algunas de esas variables
 
     

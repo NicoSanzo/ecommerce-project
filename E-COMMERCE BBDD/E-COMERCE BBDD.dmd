@@ -1,8 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="E-COMERCE BBDD" id="768ED777-1D0C-4B5C-7A5D-96B9CE741981" version="3.5">
-<createdBy>sanzo</createdBy>
-<createdTime>2024-10-14 19:51:11 UTC</createdTime>
-<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
-<capitalNames>false</capitalNames>
-<designId>768ED777-1D0C-4B5C-7A5D-96B9CE741981</designId>
-</OSDM_Design>

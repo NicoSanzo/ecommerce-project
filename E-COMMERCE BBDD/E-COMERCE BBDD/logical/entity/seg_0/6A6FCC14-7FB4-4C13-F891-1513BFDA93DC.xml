@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="6A6FCC14-7FB4-4C13-F891-1513BFDA93DC" name="DOM-ENV">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:20:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="DIRECCION" id="6CA787BC-041C-ADC6-A95F-F3E7371A08BF">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:20:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LOCALIDAD" id="A3ADA02F-1B3B-CD2A-187B-E785C78CD40C">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:20:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PROVINCIA" id="F916C5E0-DF04-3B9A-5AB5-12D9DBC6D922">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:20:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CODIGO_POSTAL" id="A150D7C7-9E02-64CF-46CD-BEF4DF5D8D85">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:20:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID1" id="E614DD62-7EA8-5F27-E982-9285D52A49AA">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:21:06 UTC</createdTime>
+<generatorID>AB0EF463-613C-5CB8-1173-AE192EEE2A33</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<referedAttribute>B5D22A2A-48C1-2F75-7304-C3752C7A5A7C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="3FDD6486-B993-C2C8-1BC5-66A122022809" name="DOMICILIO PK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-28 21:20:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E614DD62-7EA8-5F27-E982-9285D52A49AA</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

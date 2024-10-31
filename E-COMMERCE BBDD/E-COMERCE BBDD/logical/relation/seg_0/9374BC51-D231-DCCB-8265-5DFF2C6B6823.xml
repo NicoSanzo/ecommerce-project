@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MARCA_PRODUCTO" directorySegmentName="seg_0" id="9374BC51-D231-DCCB-8265-5DFF2C6B6823">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:28:35 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<sourcePk>BC15DDA3-BCC8-A017-A994-37528B2A8B4A</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>42BF78D5-C850-5C36-7E0F-B6CBEAD19E8C</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>F1E11421-5C48-5BDE-9B88-D6425AEA6C75</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

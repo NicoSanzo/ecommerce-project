@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A494A389-10F9-2F62-A82D-3078099269DF" name="USUARIO">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:05:26 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID" id="B5D22A2A-48C1-2F75-7304-C3752C7A5A7C">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:05:32 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="USERNAME" id="2533E805-C0D6-A346-84B7-B090589E564C">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:05:53 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MAIL" id="CD3CEF16-40D3-A884-5EE2-492C1F106AFD">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:06:24 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 BYTE</dataTypeSize>
+<ownDataTypeParameters>100 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CONTRASEÑA" id="B361F082-1AE5-90ED-737A-13917F8A0D6C">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:06:46 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<ownDataTypeParameters>255 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FECHA_ALTA" id="398C1335-AA38-D3A6-177C-87C844522675">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:13:02 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE" id="6322C5B2-060A-283C-C409-38CF53A7DCDF">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-29 01:02:44 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60</dataTypeSize>
+<ownDataTypeParameters>60,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="APELLIDO" id="221DC596-7A6C-0B9A-7158-BAC8D662575E">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-29 01:02:44 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>60 BYTE</dataTypeSize>
+<ownDataTypeParameters>60 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="00C7AC63-C65C-1F09-8BD5-C1D9584ED67D" name="USUARIO PK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-18 18:31:55 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B5D22A2A-48C1-2F75-7304-C3752C7A5A7C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

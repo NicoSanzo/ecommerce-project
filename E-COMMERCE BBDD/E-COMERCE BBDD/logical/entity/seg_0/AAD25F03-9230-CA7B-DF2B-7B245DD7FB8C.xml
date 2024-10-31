@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AAD25F03-9230-CA7B-DF2B-7B245DD7FB8C" name="CATEGORIA">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 20:48:40 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID" id="9E0B9E1A-5B1B-E399-98F0-82BAEE835FD0">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 20:49:08 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="NOMBRE" id="30014EC6-C47C-2A73-4453-D96C1B39EBF2">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 20:49:35 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>40 BYTE</dataTypeSize>
+<ownDataTypeParameters>40 BYTE,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="1106DD74-456C-5ABE-4857-226E7FC66C0B" name="CATEGORIA PK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 20:49:33 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="251656BD-A370-03CC-965A-2F3E8C49B691" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9E0B9E1A-5B1B-E399-98F0-82BAEE835FD0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

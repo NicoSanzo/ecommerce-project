@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E759E9FA-552D-3443-D108-DECDF5ACADCF" name="PRODU_PUBLI">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PRODUCTO_CODIGO" id="036DB184-F391-D3F8-0C21-F0C1BBD52C46">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="64EAA927-9843-20D0-955F-9E0591D057CD" referredColumn="8A4AC376-6920-D1D8-0376-08BF001A471A"/>
+</associations>
+</Column>
+<Column name="PUBLICACION_ID" id="EE3E01ED-A5CE-1058-1E55-01C5FA810B30">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="27FD77DE-207F-0E60-782A-BEC2E7FADEA5" referredColumn="C2654DCC-73FC-751E-7360-6412E186C903"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8523907C-DE99-55FB-7A21-170193ECC8BE" name="PRODU_PUBLI_PK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="036DB184-F391-D3F8-0C21-F0C1BBD52C46"/>
+<colUsage columnID="EE3E01ED-A5CE-1058-1E55-01C5FA810B30"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A0FB3841-DA27-9DB0-C12C-F4DC0F93E205" name="PRODU_PUBLI_PRODUCTO_FK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>CA3A36FF-2795-89EA-1AAF-2EEFB6C2774C</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="036DB184-F391-D3F8-0C21-F0C1BBD52C46"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D9EED75F-F130-2A00-54E6-BB48E7B3E557" name="PRODU_PUBLI_PUBLICACION_FK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>CA3A36FF-2795-89EA-1AAF-2EEFB6C2774C</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EE3E01ED-A5CE-1058-1E55-01C5FA810B30"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

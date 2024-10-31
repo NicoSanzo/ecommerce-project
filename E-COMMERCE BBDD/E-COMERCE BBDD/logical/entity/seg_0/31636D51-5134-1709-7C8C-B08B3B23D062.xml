@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="31636D51-5134-1709-7C8C-B08B3B23D062" name="DOM_FIS">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 15:25:08 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="DIRECCION" id="836E7088-D933-7EFD-B3FD-3A41381DC708">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 15:25:46 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LOCALIDAD" id="4A24DFA4-D894-C4BB-ED6C-A02116533418">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 15:25:46 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>70 BYTE</dataTypeSize>
+<ownDataTypeParameters>70 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PROVINCIA" id="6125245F-96F4-5A05-9163-5C977B58CB1B">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 15:25:46 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="CODIGO_POSTAL" id="9DB19A77-3229-9678-A7F8-B4B9BE2D5631">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 15:25:46 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID" id="3AE324FA-6091-56C6-95F7-AC638D43F2B9">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 15:28:01 UTC</createdTime>
+<generatorID>267CD2D7-36D9-F6F9-8EC8-393C334C4213</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<referedAttribute>B5D22A2A-48C1-2F75-7304-C3752C7A5A7C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

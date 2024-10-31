@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="05A990C2-1B49-056C-898F-A91271C82033" name="ADMINISTRADOR">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>85FB7810-ADD4-3AFE-7639-0570EA26D2A3</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="6F019CB0-F39A-9BAA-3577-4D15A2ADCCB9">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>B5D22A2A-48C1-2F75-7304-C3752C7A5A7C</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BCD3A609-DCAB-79B3-41F7-06082C3E6BCF" referredColumn="1B30D999-EBB6-12C2-0022-013A80A36B3F"/>
+</associations>
+</Column>
+<Column name="VENCIMIENTO_CLAVE" id="9D63937C-CE9D-F0B8-DD12-5B4CBA270C3A">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>7D6005A8-ED09-BDFD-1288-978679284F48</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="473E08BA-6142-81E7-F684-F3DE65D4BF0F" name="ADMINISTRADOR_PK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>00C7AC63-C65C-1F09-8BD5-C1D9584ED67D</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6F019CB0-F39A-9BAA-3577-4D15A2ADCCB9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6DAF4B60-EAE1-68D2-2CEB-C0798509CB01" name="ADMINISTRADOR_USUARIO_FK">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-30 16:09:01 UTC</createdTime>
+<generatorID>F1CB6D1B-B8CA-759D-8D47-60D0FCAC3B86</generatorID>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6F019CB0-F39A-9BAA-3577-4D15A2ADCCB9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

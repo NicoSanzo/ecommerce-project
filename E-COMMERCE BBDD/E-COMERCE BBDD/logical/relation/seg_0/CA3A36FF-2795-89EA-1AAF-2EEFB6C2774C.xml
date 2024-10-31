@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="PRODU_PUBLI" directorySegmentName="seg_0" id="CA3A36FF-2795-89EA-1AAF-2EEFB6C2774C">
+<createdBy>sanzo</createdBy>
+<createdTime>2024-10-14 21:32:08 UTC</createdTime>
+<ownerDesignName>E-COMERCE BBDD</ownerDesignName>
+<engineerTo>
+<item key="F7ED8C12-6FBC-B346-483A-231F58761F76" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>F1E11421-5C48-5BDE-9B88-D6425AEA6C75</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>6D548508-317B-1B1A-D7DA-5D64F345E288</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

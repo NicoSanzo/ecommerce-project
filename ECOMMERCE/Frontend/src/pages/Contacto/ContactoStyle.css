@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+.contact-container
+{
+    width:fit-content;
+    height: 90%;
+    position: relative;
+    margin: auto;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 35px;
+    flex-wrap: wrap;
+    
+
+    .title{
+        width:75%;
+        height: fit-content;
+        display: flex;
+        font-size: 55px;
+        font-weight: 400;
+        color: #739C84;
+        font-family: "Quicksand", sans-serif;
+        align-items: center;
+        padding: 15px;
+       
+        }
+
+    .contact-items{
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        width:450px;
+        gap: 35px;
+        margin-bottom: 10%;
+       
+        .box-wpp, .mail-box,.box-redes{
+
+            height: 50px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap:40px;
+            font-family: "Questrial";
+            font-size: 18px;
+
+            img{
+                width: 40px;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                object-fit: contain;   
+         
+            }
+
+            .instagram {width: 28px;}
+
+            .like {width: 50px;}
+
+            .facebook {width: 35px;}
+
+            .text-box{
+                align-items: center;
+                width: 100%;
+            }
+        }
+    }
+
+    .contact-form{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 500px;
+        position: relative;
+        gap: 15px;
+      
+        .input-style{
+            width: 100% ;
+            height: 40px;
+            border: solid black 1px;
+            border-radius: 5px;
+            font-family: "Questrial";
+            font-size: medium;
+            padding: 10px;
+            transition: border-color 0.3s, outline-color 0.3s;
+           
+        }
+        .input-style:focus{
+            border: solid 2px #FDC7E8 ;
+            outline: none ;
+        }
+
+        .label-style{
+            width: 100% ;
+            font-family: "Questrial";
+            height: 30px;   
+            font-weight: bolder;    
+        }
+
+        .item-name{
+            display: flex;
+            position: relative;
+            flex-direction:row;
+            flex-wrap:wrap;  
+            width: 100%;
+            height: fit-content; 
+            justify-content: center;
+           
+
+            .name-style, .lastname-style{
+                display: flex;
+                flex-direction: column;
+                width: 50%;
+                padding: 5px ;
+                .input-style
+                {width: 100%;}  
+                
+            }
+           
+        }
+
+        .item-mail, .item-mensaje{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            padding: 5px ;
+            justify-content: center;
+
+            .textarea-style{
+                width: 100%;
+                height: 150px;
+                padding: 10px;
+                font-family: "Questrial";
+                resize: none;
+                font-size: medium;
+                border-radius: 5px;
+                transition: border-color 0.3s, outline-color 0.3s;
+            }
+
+            .textarea-style:focus{
+                border: solid 2px #FDC7E8 ;
+                outline: none ;
+            }  
+            
+        }
+
+        .msjBox{
+
+            height: fit-content;
+            width: fit-content;
+            font-family: "Quicksand", sans-serif;
+            font-size: 12px;
+            transition: 0.3 ease-in;
+        }
+
+        .submit-button{
+            width: 120px;
+            height: 40px;
+            border-radius: 50px;
+            font-family: "Questrial";
+            font-size: large;
+            font-weight: bold;
+            color: white;            
+        }       
+
+    }
+
+}
+
+@media (min-width: 220px) and (max-width: 700px)
+{
+    .contact-container{
+        width:100%;
+
+        .title {justify-content: center; }
+
+        .contact-items{
+            gap: 0;
+            align-items:left;
+            width: fit-content;  
+        }
+
+        .contact-form { width: 100%;}
+    }
+}

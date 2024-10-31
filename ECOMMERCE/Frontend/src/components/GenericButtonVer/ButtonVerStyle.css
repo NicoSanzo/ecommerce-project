@@ -1,0 +1,22 @@
+
+.buttonVer
+{   
+   box-shadow: 0 0 3px 0 black;
+   border-radius: 40px;
+   height: 40px;
+   width: 60%;
+   cursor: pointer;
+   align-self: center;
+   background-color: #FDC7E8;
+   margin-top: 10px;
+   border: none;
+   z-index: 10;
+   cursor:pointer;
+}   
+
+.buttonVer:hover{
+
+   background-color: #ff80ce ;
+   transition: 0.2s;
+   
+}

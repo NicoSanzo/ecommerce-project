@@ -16,28 +16,31 @@
         font-family: "Questrial";
         margin: 0 auto;
         border-radius: 15px; 
+        z-index: 10;
           
-        ul{
+        .Desplegable{
             box-shadow: 0 0 2px 0;
             border-radius: 15px;  
+
+            li{
+                height: 35px;
+                display: flex;
+                padding: 5px;
+                align-items: center;
+                cursor: pointer;
+                border-radius: 15px;     
+                padding: 15px;    
+                text-transform: uppercase; 
+                letter-spacing: 2px;
+                font-size: 14px;
+            }
+    
+            li:hover{
+                background-color: #FDC7E8; 
+            }
         }   
         
-        li{
-            height: 35px;
-            display: flex;
-            padding: 5px;
-            align-items: center;
-            cursor: pointer;
-            border-radius: 15px;     
-            padding: 15px;    
-            text-transform: uppercase; 
-            letter-spacing: 2px;
-            font-size: 14px;
-        }
-
-        li:hover{
-            background-color: #FDC7E8; 
-        }
+       
     }
 
     .input-busqueda{

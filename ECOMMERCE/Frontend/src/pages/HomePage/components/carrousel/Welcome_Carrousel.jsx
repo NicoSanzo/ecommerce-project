@@ -9,7 +9,7 @@ export const Welcome_Carrousel =()=>{
    return (
        <>
          <section className="welcome">
-            <Carrousel ImagenesCarrousel= {images} />
+            <Carrousel ImagenesCarrousel= {images} autoslide={true} />
          </section>
        </>
       

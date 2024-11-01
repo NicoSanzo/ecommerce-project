@@ -3,10 +3,9 @@ import "./ProductosStyle.css";
 import { ProductCard } from "../../components/GenericProductCard/ProductCard";
 import { OrdenMenu } from "./components/ordenMenu/OrdenMenu";
 import { FilterCategorias } from "./components/FilterMenu/FilterCategorias";
+import { LoadingComponente } from "../../components/GenericLoadingComponent/LoadingComponent";
 import { FilterModelo } from "./components/FilterModelos/FilterModelos";
 import { useSearch } from "../../hooks/searchContext";
-
-
 
 
 
@@ -18,12 +17,6 @@ export const Productos = () =>{
     const {FoundData} = useSearch();
     const {loading}= useSearch();
     const {Error}= useSearch();
-/*
-    const productosFiltrados =(loading,data,error)=>{
-        setListadodeproductos(data);
-        setError(error);
-        setLoading(loading);
-    }*/
 
        useEffect(() => {
         if (FoundData) {
@@ -41,12 +34,12 @@ export const Productos = () =>{
                 </div>
                 <div className="filter-menu-container">
                     <FilterCategorias/>
-                    <FilterModelo/>
-                   
+                    <FilterModelo/>  
                 </div>
                 <div className="products-container">
+                    
                 {loading ? (
-                    "Cargando..."
+                    <LoadingComponente/>
                 ) : listadodeProductos.data.length > 0 ? (
                     listadodeProductos.data.map((producto) => (
                         <ProductCard 

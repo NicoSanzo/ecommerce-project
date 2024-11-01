@@ -52,7 +52,7 @@ export const OrdenMenu = () =>{    //recibe como argumento una funcion de la pag
                     />
                     {abierto && (                    
                         <div className="items-container">
-                            <ul>
+                            <ul className="Desplegable">
                                 {opciones.map(opcion => (
                                 <li key={opcion} onClick={() => cambiarOpcion(opcion)} >
                                     {opcion}

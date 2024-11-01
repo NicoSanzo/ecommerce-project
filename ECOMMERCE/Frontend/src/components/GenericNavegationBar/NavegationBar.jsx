@@ -2,16 +2,16 @@ import "./StyleNavegationBar.css";
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/PedidoFetchGenerico";
 import { useSearch } from "../../hooks/searchContext";
+import { useNavigate } from 'react-router-dom';
 
 export const NavegationBar = () => {
     
     const [inputSearchValue, setInputSearchValue] = useState('');
     const [trigger, setTrigger] = useState(false);
     const {setinputOrder}=useSearch();
-
+    const navigate = useNavigate();
     const { setFoundData } = useSearch(); // Accede al contexto
     const {setSearchData} =useSearch();
-   
     const { setLoading } = useSearch();
     const { setError } = useSearch();
 
@@ -25,17 +25,15 @@ export const NavegationBar = () => {
             setTrigger(true); // Dispara la consulta en useFetch 
             setSearchData(inputSearchValue);
             setinputOrder("Todos");
-
+            navigate(`/Productos?search=${inputSearchValue}`);
     };
 
     const ApretarEnter = (event) => {
         if (event.key === 'Enter') { // Verifica que no esté vacío
-            setSearchData(inputSearchValue);
             realizarConsulta(); // Ejecuta la consulta al presionar Enter
-            setinputOrder("Todos");
+            
         }
     };
-
 
     const { data, loading, error } = useFetch('api/busqueda.php', 'POST', { inputSearchValue }, trigger);
 
@@ -68,7 +66,6 @@ export const NavegationBar = () => {
                     <div className="search-icon" onClick={realizarConsulta}></div>
                 </div>
             </div>
-
         </>
     );
 };

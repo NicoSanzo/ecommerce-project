@@ -3,13 +3,15 @@ import {useState} from 'react';
 import "./Carrousel_Style.css";
 
 
-export function Carrousel({ImagenesCarrousel})
+
+export function Carrousel({ImagenesCarrousel,autoslide})
 {   
     var widthImg= 100 / ImagenesCarrousel.length;
     const pointsRef = useRef([]);
     const carouselRef= useRef(null);
     const[displacemente_size_width,Set_sizeWith]=useState(0);
     const[displacement_image_counter,SetCounter]=useState(0);
+
     
     //console.log(displacemente_size_width);
    // console.log(displacement_image_counter);
@@ -23,6 +25,11 @@ export function Carrousel({ImagenesCarrousel})
         (SetCounter(displacement_image_counter - 1 ), Set_sizeWith(displacemente_size_width - widthImg));     
     }
 
+    useEffect(()=>{
+        carouselRef.current.style.width = `${100 * ImagenesCarrousel.length}%`;
+    },[])
+
+
     useEffect(() => {
         if (carouselRef.current){
             carouselRef.current.style.transform = `translate(-${displacemente_size_width}%)`;
@@ -30,7 +37,6 @@ export function Carrousel({ImagenesCarrousel})
         }
     }, [displacemente_size_width]);
 
-   
    
     useEffect(() => {
         pointsRef.current.forEach((point, index) => {
@@ -42,15 +48,18 @@ export function Carrousel({ImagenesCarrousel})
 
 
     useEffect(() => {
-        const interval = setInterval(handleClick_next, 3000);
-        return () => clearInterval(interval);
+        if(autoslide){
+            const interval = setInterval(handleClick_next, 3000);
+            return () => clearInterval(interval);
+            }
     }, [displacement_image_counter]);
           
     return (
         <>
             <div id="carrousel-images">
             {
-                <div id="carrouseles" ref={carouselRef} >    
+                <div id="carrouseles" ref={carouselRef} > 
+                    
                     {ImagenesCarrousel.map(imagenes=>{ 
                     return <div  className="images" key={imagenes.id}>
                                 <img src= {imagenes.src} alt="Loading..." loading="lazy"/>

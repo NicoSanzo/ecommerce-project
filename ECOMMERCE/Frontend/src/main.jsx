@@ -8,23 +8,29 @@ import { HeaderB } from './pages/HomePage/components/header/headerSeccionB/heade
 import { Footer } from './pages/HomePage/components/footer/Footer';
 import { Contacto } from './pages/Contacto/Contacto';
 import { Productos } from './pages/Productos/Productos';
+import { SearchProvider } from './hooks/searchContext';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
 <>
   
-  <Router>
-    <HeaderA/>
-    <HeaderB/>
-    <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/InfoCompra" element={<InfoCompra/>}/>
-      <Route path="/Contacto" element={<Contacto/>}/>
-      <Route path="/Productos" element={<Productos/>} />
-    </Routes>
-    <Footer/>
-  </Router>
+
+    <Router>
+      <HeaderA />
+      <SearchProvider>
+        <HeaderB />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/InfoCompra" element={<InfoCompra />} />
+          <Route path="/Contacto" element={<Contacto />} />
+          <Route path="/Productos" element={<Productos />} />
+          </Routes>
+      <Footer />
+      </SearchProvider>
+    </Router>
+ 
      
 
  

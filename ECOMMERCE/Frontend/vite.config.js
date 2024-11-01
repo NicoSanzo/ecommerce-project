@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost/ECOMMERCE/Backend', // Cambia esto a la URL de tu servidor PHP
+        target: 'http://localhost/ecommerce-project/ECOMMERCE/Backend', // Cambia esto a la URL de tu servidor PHP
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // Opcional: reescribe la ruta
       },

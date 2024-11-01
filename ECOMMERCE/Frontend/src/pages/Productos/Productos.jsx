@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductosStyle.css";
 import { ProductCard } from "../../components/GenericProductCard/ProductCard";
-import { productos } from "./prueba";
 import { OrdenMenu } from "./components/ordenMenu/OrdenMenu";
 import { FilterCategorias } from "./components/FilterMenu/FilterCategorias";
 import { FilterModelo } from "./components/FilterModelos/FilterModelos";
-
+import { useSearch } from "../../hooks/searchContext";
 
 
 
@@ -16,33 +15,29 @@ export const Productos = () =>{
     
 
     const [listadodeProductos,setListadodeproductos]=useState({data:[]});
-    const [Error,setError]=useState(null);
-    const [Loading,setLoading]=useState(false);
-
+    const {FoundData} = useSearch();
+    const {loading}= useSearch();
+    const {Error}= useSearch();
+/*
     const productosFiltrados =(loading,data,error)=>{
         setListadodeproductos(data);
         setError(error);
         setLoading(loading);
-    }
-    /*
-    const listadeproductos = listadodeProductos.data.map((index, titulo, precio, imagen)=>{
-        return(
-           <ProductCard 
-               key={index} 
-               imagen={imagen} 
-               description={titulo} 
-               price={precio}
-            />
-          )
-       });
-    */
+    }*/
+
+       useEffect(() => {
+        if (FoundData) {
+            setListadodeproductos(FoundData);
+        }
+    }, [FoundData]);
+
     return (
         <>
             <div className="principal-container">
 
                 <div className="container-menu-order">
                     <h2> ORDENAR POR: </h2>
-                    <OrdenMenu productosFiltrados={productosFiltrados}/>
+                    <OrdenMenu />
                 </div>
                 <div className="filter-menu-container">
                     <FilterCategorias/>
@@ -50,18 +45,22 @@ export const Productos = () =>{
                    
                 </div>
                 <div className="products-container">
-                    {Loading==true && "loading..."}
-                    {listadodeProductos.data.length > 0 && listadodeProductos.data.map((producto) => {
-                        return(
-                            <ProductCard 
-                                key={producto.id} 
-                                imagen={producto.imagen} 
-                                description={producto.titulo} 
-                                price={producto.precio}
-                             />
-                           )
-                    })}
-                    {Error && "No se pudo filtrar"} 
+                {loading ? (
+                    "Cargando..."
+                ) : listadodeProductos.data.length > 0 ? (
+                    listadodeProductos.data.map((producto) => (
+                        <ProductCard 
+                            key={producto.id} 
+                            imagen={producto.imagen} 
+                            description={producto.titulo} 
+                            price={producto.precio} 
+                        />
+                    ))
+                ) : Error ? (
+                    "No se pudo filtrar"
+                ) : (
+                    "No se encontraron objetos"
+                )}
                 </div>
             </div>
         </>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useFetch = (url, method = 'POST', body = null,triggerFetch ,delay=0) => {
+export const useFetch = (url, method = 'POST', body = null,triggerFetch) => {
     const [data, setData] = useState({data:[]});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -10,8 +10,7 @@ export const useFetch = (url, method = 'POST', body = null,triggerFetch ,delay=0
         const fetchData = async () => {
             setLoading(true);
              setError(null);
-            try {
-                await new Promise(resolve => setTimeout(resolve, delay));
+            try {     
                 const options = {
                     method,
                     headers: {

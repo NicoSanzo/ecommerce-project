@@ -5,9 +5,7 @@ import { OrdenMenu } from "./components/ordenMenu/OrdenMenu";
 import { FilterCategorias } from "./components/FilterMenu/FilterCategorias";
 import { LoadingComponente } from "../../components/GenericLoadingComponent/LoadingComponent";
 import { FilterModelo } from "./components/FilterModelos/FilterModelos";
-import { useSearch } from "../../hooks/searchContext";
-
-
+import { useSearch } from "../../Context/searchContext";
 
 
 export const Productos = () =>{
@@ -47,6 +45,7 @@ export const Productos = () =>{
                             imagen={producto.imagen} 
                             description={producto.titulo} 
                             price={producto.precio} 
+                            itemKey={producto.id}
                         />
                     ))
                 ) : Error ? (

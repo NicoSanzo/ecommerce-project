@@ -1,8 +1,9 @@
 import "./StyleNavegationBar.css";
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../../hooks/PedidoFetchGenerico";
-import { useSearch } from "../../hooks/searchContext";
+import { useSearch } from "../../Context/searchContext";
 import { useNavigate } from 'react-router-dom';
+
 
 export const NavegationBar = () => {
     

@@ -1,22 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductCardStyle.css";
-import {Link} from "react-router-dom";
 import { ButtonVer } from "../GenericButtonVer/ButtonVer";
+import { useFetch } from "../../hooks/PedidoFetchGenerico";
+import { useProductContent } from "../../Context/productDetailContext";
+import { useNavigate } from "react-router-dom";
+
+export const ProductCard = ({imagen,description,price,itemKey}) =>{
+
+const {setDataProducto} = useProductContent()
+const [triggerFetch,setTriggerFetch]= useState(false);
+const navigate = useNavigate();
 
 
-export const ProductCard = ({imagen,description,price}) =>{
+const mostrarDetalleProducto = () =>{
+    setTriggerFetch(true);   
+}
+
+const {data,loading,error} =useFetch('api/busquedaProductoUnico.php','POST',{itemKey},triggerFetch);
+
+
+useEffect(() => {
+   
+    if (data) {
+      setDataProducto(data);
+      setTriggerFetch(false);  
+      navigate(`/ProductoDetail?ID=${itemKey}`);
+    }
+  },  [data, itemKey, navigate, setDataProducto]);
+
 
  return(
         <>
-            <Link>
-                <div className="producto">
+            
+                <div className="producto" onClick={mostrarDetalleProducto} >
                     <img src={imagen} loading="lazy" />
                     <h2 className="descriptionStyle">{description}</h2>
                     <h2 className="stylePrice" > {price}</h2>
                     <h2 className="transferStyle">10% off con Transferencia</h2>
                     <ButtonVer/>            
                 </div>
-            </Link>
+            
         </>
 
  )

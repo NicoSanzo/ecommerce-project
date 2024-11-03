@@ -7,8 +7,9 @@
     height: 33px;
     position: relative;
     font-family: "Questrial";
+    cursor: pointer;
     
-    a{
+    .container-login{
         position: relative;
         height: 100%;
         width: 100%;
@@ -26,10 +27,13 @@
         h2{
             display: flex;
             flex-direction: column;
-            text-align: left;
+            text-align:left;
             width: fit-content;
             font-size: 14px;
             font-weight: 2px ;   
+            display: flex;
+            flex-direction: row;
+            align-items: center;     
         }
     }
 }
@@ -40,7 +44,7 @@
     .userLogin{
        
        width: fit-content;
-        a{  
+        .container-login{  
             display: flex;
             flex-direction: column;
             

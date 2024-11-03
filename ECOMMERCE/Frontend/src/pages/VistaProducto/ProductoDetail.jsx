@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Stock_icon from "../../assets/Stock_icon.svg";
 import shipping_icon from "../../assets/shipping_icon.svg";
 import Shield_icon from "../../assets/Shield_icon.svg";
-
 import "./ProductoDetailStyle.css";
+import { useProductContent } from "../../Context/productDetailContext";
 import { Carrousel } from "../../components/GenericCarrousel/Carrousel";
-import { productos } from "./prueba";
 import { FichaTecnica } from "./Components/FichaTecnica/FichaTecnia";
+
+
+
+
 export const ProductoDetail = ()=>{
 
+    const {dataProduct}= useProductContent();
+
+    if (dataProduct) {localStorage.setItem('dataProduct', JSON.stringify(dataProduct));}
+    const storedDataProduct = JSON.parse(localStorage.getItem('dataProduct'));
     
+    const imagenes = [{ id: storedDataProduct.data[0].publicacion_id, src: storedDataProduct.data[0].imagen , description:"foto" }]
 
     return(
 
         <div className="general-product-container">
             <div className="product-container">
                 <div className="imagen-container">
-                    <Carrousel ImagenesCarrousel={productos} autoslide={false}/>                
+                    <Carrousel ImagenesCarrousel={imagenes} autoslide={false}/>                
                 </div>
                 <div className="features-container Responsive">
                     <h2 className="categorias Responsive" >Agenda</h2>   
-                    <h2 className="titulo Responsive">jostick Playstion 5 me quiero Morir 123 Aoaoaoa</h2>         
-                    <h2 className="id-Producto Responsive">ID:16585</h2>
+                    <h2 className="titulo Responsive">{storedDataProduct.data[0].descripcion}</h2>         
+                    <h2 className="id-Producto Responsive">ID: {storedDataProduct.data[0].publicacion_id}</h2>
                     <hr />
-                    <h2 className="Precio Responsive">$ 41690,68</h2>
+                    <h2 className="Precio Responsive">${storedDataProduct.data[0].precio}</h2>
                     <hr />
                     <div className="buy-conditions ">
                         <h2 className="Stock"> 
@@ -36,13 +44,12 @@ export const ProductoDetail = ()=>{
                     </div>
                 </div>
                 <div className="Especificaciones">
-                   <FichaTecnica/>
+                   <FichaTecnica Datos={storedDataProduct}/>
                 </div>
                 <div className="Description">
                     <h2> Descripcion</h2>
                     <p className="texto">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum id porro rem blanditiis mollitia debitis beatae, hic itaque velit, nihil doloremque? Esse, voluptate. Labore a exercitationem sapiente! Veniam, ipsam placeat.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam illum laboriosam suscipit qui reprehenderit, labore aperiam consequuntur impedit! Eaque quidem dolorem consequuntur porro veritatis veniam quos eum modi unde adipisci.
+                        {storedDataProduct.data[0].descripcion}
                     </p>
                 </div>
 

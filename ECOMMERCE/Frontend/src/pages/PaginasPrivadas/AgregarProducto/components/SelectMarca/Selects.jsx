@@ -1,17 +1,12 @@
 import React, { useEffect, useState, forwardRef, useRef } from "react";
-import { InputText } from "../InputText/inputText";
 import { useFetch } from "../../../../../hooks/PedidoFetchGenerico";
 import "./SelectsStyle.css";
-import { useAltaBajaData } from "../../../../../Context/AltaModProductContext";
+
 
 export const Selects = forwardRef(({ refeMarca,refCategoria,ErrorCat,ErrorMarca ,onChange},ref)=>{
 
 
-
 const[triggerfetch,setTriggerFetch]=useState(true);
-
-
-
 
 /*AGREGO LAS MARCAS Y CATEGORIAS*/
 
@@ -20,7 +15,6 @@ const[triggerfetch,setTriggerFetch]=useState(true);
   useEffect(()=>{
     setTriggerFetch(false);  
   },[data_marca_categoria])
-
 
 
 /*********************************CONTROLAN LOS SELECT ACTUALIZNDO EL VALOR AL SELECCIONAR UNA OPCION*****************/
@@ -54,52 +48,47 @@ const ControlMarcaChecked = (event) => {
     setIsAddingMarca(event.target.checked);
     setErrormarcainput(null);
     SetseagregoMarca(false);
+    
   };
 
   const handleChangeInputMarca = (event) => {
     setInputmarcaValue(event.target.value); 
-    SetseagregoMarca(false);
     
     if (errorMarcainput) {
       setErrormarcainput(null);
     }
     if (inputMarcaValue.length < 4 && isAddingMarca) {
-      setErrormarcainput("*Ingrese una Marca Valida");
+      setErrormarcainput("*Ingrese una Marca");
+      
     }
 };
 
 const SubirMarcaButton =() =>{
-
   if(inputMarcaValue.length > 4 && isAddingMarca){
     setTriggerMarca(true);
-    SetseagregoMarca(false);
   }
   if (inputMarcaValue.length < 4 && isAddingMarca){
-    setErrormarcainput("*Ingrese una Marca Valida");
-    SetseagregoMarca(false);
+    setErrormarcainput("*Ingrese una Marca");
   }
-  if(data_marca_categoria){
-    SetseagregoMarca(true);
-    if(seagregoMarca)
-      {
-        setInputmarcaValue('');
-      }
-   }
+  
 };
 
-
 useEffect(() => {
-  if (data_Success_Categoria) {
+  if (Success_Marca) {
     SetseagregoMarca(true);
     setTriggerMarca(false)
     setTriggerFetch(true);
     setInputmarcaValue('');
-    
   }
   if (erorr_Success_Marca) {
     setErrormarcainput("*Error al agregar categoría. Intente nuevamente.");
   }
-}, [Success_Marca, loading_Marca_cat]);
+
+      setTimeout(() => {
+        SetseagregoMarca(false)
+    }, 2500);
+
+}, [Success_Marca]);
 
 
 /*********************************CONTROLAN TODO LO RELACIONADO CON EL INPUT Y INPUT CHECKED DE CATEGORIAS**********************************/
@@ -117,18 +106,17 @@ const [seAgregoCat,SetseAgregoCat]=useState(false);
    const ControlCatChecked = (event) => {
        setIsAddingCat(event.target.checked);
        setErrorCatinput(null);
-       SetseAgregoCat(false);
+      
      };
    
      const handleChangeInputCat = (event) => {
        setInputCatValue(event.target.value); 
-       SetseAgregoCat(false);
        
        if (errorCatinput) {
         setErrorCatinput(null);
        }
        if (inputCatValue.length < 4 && isAddingCat) {
-        setErrorCatinput("*Ingrese una Categoria Valida");
+        setErrorCatinput("*Ingrese una Categoria");
        }
    };
    
@@ -136,24 +124,16 @@ const [seAgregoCat,SetseAgregoCat]=useState(false);
    
      if(inputCatValue.length > 4 && isAddingCat){
       setTriggerCategoria(true);
-      SetseAgregoCat(false);
+   
      }
      if (inputCatValue.length < 4 && isAddingCat){
-      setErrorCatinput("*Ingrese una Categoria Valida");
-      SetseAgregoCat(false);
+      setErrorCatinput("*Ingrese una Categoria");
      }
-     if(data_Success_Categoria){
-      SetseAgregoCat(true);
-       if(seAgregoCat)
-         {
-          setInputCatValue('');
-         }
-      }
-   };
+     
+    };
+    
 
-
-
-   useEffect(() => {
+    useEffect(() => {
     if (data_Success_Categoria) {
      
       SetseAgregoCat(true);
@@ -164,10 +144,14 @@ const [seAgregoCat,SetseAgregoCat]=useState(false);
     if (error_Success_Categoria) {
       setErrorCatinput("*Error al agregar categoría. Intente nuevamente.");
     }
-  }, [data_Success_Categoria, error_Success_Categoria]);
-  
-  
 
+    setTimeout(() => {
+      SetseAgregoCat(false)
+  }, 2500);
+
+  }, [data_Success_Categoria]);
+  
+  
     return(            
 
             <>
@@ -202,9 +186,7 @@ const [seAgregoCat,SetseAgregoCat]=useState(false);
                     {errorMarcainput && <span className="error-message">{errorMarcainput}</span>}
                     <button type="button" onClick={SubirMarcaButton}>Agregar</button>
                     
-                  </div>
-                 
-                )}
+                  </div> )}
                  
               </div>
           

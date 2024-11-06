@@ -5,7 +5,6 @@ import { InputNumber } from "./components/inputSelect/inputNumber";
 import { useFetch } from "../../../hooks/PedidoFetchGenerico";
 import { Selects } from "./components/SelectMarca/Selects";
 import { ImageUploader } from "./components/AgregarImagen/AgregarImagen";
-import { useAltaBajaData } from "../../../Context/AltaModProductContext";
 
 
 
@@ -29,12 +28,8 @@ export const AgregarProducto = () => {
     const[FORMDATA,SetFormData]=useState({data:[]});
     const[triggerfetch,setTriggerfetch]=useState(false);
     
+    const principal_container = useRef(null)
 
-
-    const {dataPubliNueva,}=useAltaBajaData();
-
-
-   
 
     const validate = () => {
         const newErrors = {};
@@ -46,13 +41,13 @@ export const AgregarProducto = () => {
     
         if (!priceRef.current.value) {
             newErrors.price = "* El precio es requerido";
-        } else if (priceRef.current.value.length > 9) {
+        } else if (priceRef.current.value.length > 999999999) {
             newErrors.price = "* Hasta $999999999,99";
         }
     
         if (!stockRef.current.value) {
             newErrors.stock = "* El stock es requerido";
-        } else if (stockRef.current.value.length > 3) {
+        } else if (stockRef.current.value > 1000) {
             newErrors.stock = "* Hasta 999";
         }
     
@@ -64,7 +59,7 @@ export const AgregarProducto = () => {
     
         const medidas = [AltoRef, AnchoRef, ProfundidadRef, PesoRef];
         medidas.forEach(ref => {
-            if (ref.current.value.length > 3) {
+            if (ref.current.value > 1000) {
                 newErrors.medidas = "* Hasta 999";
             }
         });
@@ -77,8 +72,8 @@ export const AgregarProducto = () => {
             newErrors.color = "* Debe contener hasta 25 caracteres";
         }
         
-        if (descriptionRef.current.value.length > 700) {
-            newErrors.descripcion = "* Debe contener hasta 700 caracteres";
+        if (descriptionRef.current.value.length > 10000) {
+            newErrors.descripcion = "* Debe contener hasta 10000 caracteres";
         }
     
         if (!refCategoria.current.value) {
@@ -94,12 +89,12 @@ export const AgregarProducto = () => {
 
     const handleChange = () => {
        
-
         if (submitted) { // Solo valida si ya se ha intentado enviar  
             setErrors(validate());
             setErrorEnvio(false);
         }
-       
+        refMarca.current.style.borderColor="";
+        principal_container.current.style.borderColor="#FDC7E8";
     };
 
     const handleSubmit = (event) => {
@@ -126,41 +121,42 @@ export const AgregarProducto = () => {
            formData.append("categoria_id", refCategoria.current.value);
            formData.append("imagen", refImagen.current);
             
-           
             SetFormData(formData);
-            setTriggerfetch(true);
-            
+            setTriggerfetch(true);   
+
+            console.log(error);
+            console.log(data);
 
         } else {
             setErrors(validationErrors);
+            principal_container.current.style.borderColor="red";
+            refMarca.current.style.borderColor="red";
             setErrorEnvio(true);
         }
  
     };
     
-
-    
     const {data,loading,error}=useFetch('api/alta_publicaciones.php','POST',FORMDATA,triggerfetch)
-
-    console.log(data);
     console.log(error);
-           
- 
+            console.log(data);
+    
+   
+
 useEffect(() => {
     if (triggerfetch) {
         // Aquí podrías hacer algo más si es necesario con los datos.
-       
+        
         setTriggerfetch(false); // Reinicia el estado después de hacer la consulta
     }
+   
 }, [data, error, triggerfetch]);
 
 
     return (
-        <form onSubmit={handleSubmit} className="principal-container-agregar">
-            <h2 className="titulo-principal">AGREGAR PRODUCTO</h2>
+        <form onSubmit={handleSubmit} className="principal-container-agregar" ref={principal_container}>
+            <h2 className="titulo-principal">Nueva publicacion</h2>
            
 
-            <h2>Publicación</h2>
             <div className="div-titulo-publi">
                 <InputText
                     label_name={"titulo "}
@@ -168,6 +164,7 @@ useEffect(() => {
                     error={errors.title}
                     onChange={handleChange}
                     required={true}
+                    placeholder={"Hasta 70 caracteres"}
                 />
             </div>
 
@@ -225,6 +222,7 @@ useEffect(() => {
                     ref={ColorRef}
                     error={errors.color}
                     onChange={handleChange}
+                   
                     
                 />
                 <InputNumber

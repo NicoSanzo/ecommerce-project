@@ -1,6 +1,5 @@
 import React, { forwardRef, useRef, useState } from 'react';
 import './AgregarImagenStyle.css';
-import { useAltaBajaData } from '../../../../../Context/AltaModProductContext';
 
 
 export const ImageUploader = forwardRef(({ onChange,error }, ref) => {

@@ -14,6 +14,8 @@ import { LoginModal } from './pages/Login/LoginModal/loginModal';
 import { PrivateRoute } from './Routes/PrivatesRoute';
 import { AgregarProducto } from './pages/PaginasPrivadas/AgregarProducto/AgregarProducto';
 import { AppContextProviders } from './Context/Providers';
+import { Publicaciones } from './pages/PaginasPrivadas/Publicaciones/Publicaciones';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
@@ -30,6 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route path="/contacto" element={<Contacto />} />
             <Route element={<PrivateRoute />}>
               <Route path="/AgregarProducto" element={<AgregarProducto />} />
+              <Route path="/Publicaciones" element={<Publicaciones />} />
             </Route>
           </Routes>
           <LoginModal/>     

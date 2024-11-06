@@ -1,10 +1,12 @@
 <?php
 header('Content-Type: application/json'); // Encabezado JSON
 
+
 require("./Checking.php");
 
 $response = []; // Inicializa el array de respuesta para evitar valores nulos
 
+// Verificar las variables requeridas
 if(!verificarVariables()){
     $response['error'] = "No se obtuvo la información necesaria para poder realizar el alta de la publicación.";
     echo json_encode($response);
@@ -15,6 +17,7 @@ $response['data'] = []; // Inicializa el array 'data'
 
 $imageUrl = null;  // Inicializa la variable para la URL de la imagen
 
+// Verificar si la imagen está presente en la solicitud
 if (isset($_FILES['imagen'])) {
     $targetDir = 'uploads/';
     $imageName = basename($_FILES['imagen']['name']);
@@ -23,18 +26,18 @@ if (isset($_FILES['imagen'])) {
     $check = getimagesize($_FILES['imagen']['tmp_name']);
     if ($check !== false) {
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $targetFilePath)) {
-            $imageUrl = 'api/uploads/' . $imageName; // Corrige la URL aquí
+            $imageUrl = 'api/uploads/' . $imageName; // URL correcta
         } else {
             http_response_code(500);
-            $response['error'] = "no se subio la imagen";
+            $response['error'] = "No se subió la imagen";
             echo json_encode($response);
-            exit;
+            exit();
         }
     } else {
         http_response_code(400);
-        $response['error'] = "imagen no valida";
+        $response['error'] = "Imagen no válida";
         echo json_encode($response);
-        exit;
+        exit();
     }
 }
 
@@ -49,19 +52,9 @@ $peso = retornarValor("peso");
 
 require("./Conexion.php");
 
-$query = "SELECT count(codigo) AS cantidad FROM producto;";
-$result = mysqli_query($conn, $query);
-if(!$result ){
-    $response['error'] = "No se pudo obtener el siguiente número de ID.";
-    echo json_encode($response);
-    exit();
-}
-$fila = mysqli_fetch_assoc($result);
-$id_siguiente_producto = $fila['cantidad'] + 1;
-mysqli_free_result($result);
-
+// Insertar en la tabla producto
 $query = "INSERT INTO producto VALUES (
-    '$id_siguiente_producto', 
+    NULL, 
     '$modelo', 
     " . ($color ? "'$color'" : "NULL") . ", 
     " . ($alto ? "'$alto'" : "NULL") . ", 
@@ -71,26 +64,17 @@ $query = "INSERT INTO producto VALUES (
     '$marca', 
     '$categoria'
 );";
+
 $result = mysqli_query($conn, $query);
 
 if(!$result){
     $response['error'] = mysqli_error($conn);
     echo json_encode($response);
+
     exit();
 }
 
-$response['data'][] = "Paso ingreso Producto";
-
-$query = "SELECT count(id) AS cantidad FROM publicacion;";
-$result = mysqli_query($conn, $query);
-if(!$result ){
-    $response['error'] = "No se pudo obtener el siguiente número de ID.";
-    echo json_encode($response);
-    exit();
-}
-$fila = mysqli_fetch_assoc($result);
-$id_siguiente_publicacion = $fila['cantidad'] + 1;
-mysqli_free_result($result);
+$id_siguiente_producto = mysqli_insert_id($conn);
 
 $titulo = $_POST['titulo'];
 $precio = $_POST['precio'];
@@ -98,7 +82,8 @@ $stock = $_POST['stock'];
 $imagen = $imageUrl;  // Usa la URL de la imagen cargada en vez de $_POST['imagen']
 $descripcion = retornarValor("descripcion");
 
-$query = "INSERT INTO publicacion VALUES ('$id_siguiente_publicacion','$titulo','$precio','$stock','$imagen'," . ($descripcion ? "'$descripcion'" : "NULL") . ");";
+// Insertar en la tabla publicacion
+$query = "INSERT INTO publicacion VALUES (0, '$titulo', '$precio', '$stock', '$imagen', " . ($descripcion ? "'$descripcion'" : "NULL") . ");";
 $result = mysqli_query($conn, $query);
 
 if(!$result){
@@ -107,7 +92,10 @@ if(!$result){
     exit();
 }
 
-$query = "INSERT INTO produ_publi VALUES('$id_siguiente_producto','$id_siguiente_publicacion')";
+$id_siguiente_publicacion = mysqli_insert_id($conn);
+
+// Relacionar producto y publicación
+$query = "INSERT INTO produ_publi VALUES('$id_siguiente_producto', '$id_siguiente_publicacion')";
 $result = mysqli_query($conn, $query);
 
 if(!$result){
@@ -116,18 +104,28 @@ if(!$result){
     exit();
 }
 
-$response['data'][] = "Publicación y producto creados exitosamente";
-$response['success'] = true;
-echo json_encode($response);
+//$response['success'] = true;
+
+$json_response = json_encode($response);
+if ($json_response === false) {
+    // Error en la codificación JSON
+    $response['error'] = json_last_error_msg();
+    http_response_code(500);
+    echo json_encode($response);
+} else {
+    // Respuesta correcta
+     $response['success'] = true;
+     echo json_encode($response);
+}
+
 mysqli_close($conn);
 
+// Función para verificar las variables requeridas
 function verificarVariables(){
-    if(isset($_POST['modelo']) && isset($_POST['marca_id']) && isset($_POST['categoria_id']) && isset($_POST['titulo']) && isset($_POST['precio']) && isset($_POST['stock'])){
-        return true;
-    }
-    return false;
+    return isset($_POST['modelo']) && isset($_POST['marca_id']) && isset($_POST['categoria_id']) && isset($_POST['titulo']) && isset($_POST['precio']) && isset($_POST['stock']);
 }
 
+// Función para retornar valores o NULL si no existe
 function retornarValor($campo){
     return isset($_POST[$campo]) && $_POST[$campo] != "" ? $_POST[$campo] : null;
 }

@@ -1,7 +1,7 @@
 <?php
 require("./Conexion.php");
 
-//($query = "SELECT * FROM publicacion WHERE titulo LIKE ('%" . $word ."%')";
+header('Content-Type: application/json');
 $response['data'] = [];
 
 if (isset($_POST["itemKey"])) {

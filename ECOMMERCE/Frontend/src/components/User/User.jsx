@@ -1,7 +1,6 @@
 import React from "react";
 import "./UserStyle.css"
 import IconUser from "../../assets/Account_icon.svg";
-import downArrow from "../../assets/down_arrow.svg";
 import { useLoginModal } from "../../Context/LoginPopContext";
 import { useAuth } from "../../Context/authContext";
 import { AdminMenu } from "./Components/AdminUserMenu/ordenMenu/AdminMenu";

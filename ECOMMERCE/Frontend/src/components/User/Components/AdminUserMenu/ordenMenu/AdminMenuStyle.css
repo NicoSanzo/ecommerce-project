@@ -68,22 +68,24 @@
                 color: black;
                 display: flex;
                 align-items: center;
+
                 
             }
                  
             li{
                 height: 35px;
                 display: flex;
-                padding: 5px;
                 align-items: center;
                 cursor: pointer;
                 border-radius: 15px;     
-                padding: 15px;    
                 text-transform: uppercase; 
                 letter-spacing: 2px;
                 font-size: 14px;
                 color:black;
                 font-weight: 500;
+                padding-left: 10px;
+    
+       
             }
     
             li:hover{

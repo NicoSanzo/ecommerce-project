@@ -2,7 +2,7 @@ import React, { useState,forwardRef } from "react";
 import "./inputTextStyle.css";
 
 
-export const InputText = forwardRef(({ label_name, error, onChange,required}, ref) => {
+export const InputText = forwardRef(({ label_name, error, onChange,required,placeholder}, ref) => {
 
     const [datainput, setDatainput] = useState("");
 
@@ -18,7 +18,7 @@ export const InputText = forwardRef(({ label_name, error, onChange,required}, re
             {label_name}
             {required && <span className="requerido">(requerido)</span>}
             </label>
-            <input type="text" onChange={guardarDato} value={datainput} ref={ref} />
+            <input type="text" onChange={guardarDato}  placeholder={placeholder} value={datainput} ref={ref} />
             {error && <span className="error-message">{error}</span>}
         </div>
     );

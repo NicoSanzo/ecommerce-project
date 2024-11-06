@@ -6,7 +6,7 @@ export const SearchProvider = ({ children }) => {
     const [FoundData, setFoundData] = useState({data:[]});
     const [searchData, setSearchData] = useState("");
     const [loading,setLoading]= useState(false);
-    const [inputOrder,setinputOrder]=useState("Todos");
+    const [inputOrder,setinputOrder]=useState("Todos");  // se utliza para realizar la busqueda al entrar a productos,desde el componenten de Ordenaminto y para el componente de la barra de busqueda
     const [Error,setError]=useState(null);
 
     return (

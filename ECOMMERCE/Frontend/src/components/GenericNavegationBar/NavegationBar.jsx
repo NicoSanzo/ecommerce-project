@@ -24,7 +24,7 @@ export const NavegationBar = () => {
     const realizarConsulta = () => {
            
             setTrigger(true); // Dispara la consulta en useFetch 
-            setSearchData(inputSearchValue);
+            setSearchData(inputSearchValue); // el valor con el que va a realizar la consulta
             setinputOrder("Todos");
             navigate(`/Productos?search=${inputSearchValue}`);
     };
@@ -48,7 +48,7 @@ export const NavegationBar = () => {
     useEffect(() => {
         setLoading(loading);
         if (error) setError(error);
-        if (data) setFoundData(data);
+        if (data) setFoundData(data);  //si existe la data la guarda en el contexto de busqueda para que en el componente de pagina "productos" muestre el listado de productos que encontro;
     }, [data, loading, error, setFoundData, setLoading, setError]);
 
 
@@ -63,6 +63,7 @@ export const NavegationBar = () => {
                         onKeyDown={ApretarEnter}
                         name="input-search" 
                         className="input-search" 
+                        placeholder="Buscar productos..."
                     />
                     <div className="search-icon" onClick={realizarConsulta}></div>
                 </div>

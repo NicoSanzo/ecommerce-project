@@ -24,7 +24,7 @@ useEffect(() => {
     if (data) {
       setDataProducto(data);
       setTriggerFetch(false);  
-      navigate(`/ProductoDetail?ID=${itemKey}`);
+      navigate(`/productoDetail?ID=${itemKey}`);
     }
   },  [data, itemKey, navigate, setDataProducto]);
 

@@ -51,7 +51,8 @@
         position: relative;
         padding: 40px;
         align-self:center;
-        justify-content: center;
+        place-items: center;
+        justify-items: center;
 
     }
 }

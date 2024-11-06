@@ -1,6 +1,6 @@
 import { LoginModalProvider } from './LoginPopContext';
-import { ContextAltaBajaProvider } from './AltaModProductContext';
 
+import { ContexModProvider } from './ModProductContext';
 import { ContextProductProvider } from './productDetailContext';
 import { AuthProvider } from './authContext';
 import { SearchProvider } from './searchContext';
@@ -11,9 +11,9 @@ export const AppContextProviders = ({ children }) => (
     <LoginModalProvider>
       <SearchProvider>
         <ContextProductProvider>
-          <ContextAltaBajaProvider>
+          <ContexModProvider>
             {children}
-          </ContextAltaBajaProvider>
+            </ContexModProvider>
         </ContextProductProvider>
       </SearchProvider>
     </LoginModalProvider>

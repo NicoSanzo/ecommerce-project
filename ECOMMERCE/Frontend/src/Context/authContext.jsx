@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     
        /*Verifica la session en PHP*/
-    const { data: sessionData } = useFetch('/api/check_session.php', 'POST', null, checkSessionTrigger);
+    const { data: sessionData } = useFetch('/api/check_start_session.php', 'POST', null, checkSessionTrigger);
 
    //console.log(datauser);
    console.log(autenticado);

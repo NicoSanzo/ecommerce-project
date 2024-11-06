@@ -60,6 +60,16 @@
             top:100%;
             left: 0;
             width: 250px;
+
+            a{
+                text-decoration: none;
+                height: 100%;
+                width: 100%;
+                color: black;
+                display: flex;
+                align-items: center;
+                
+            }
                  
             li{
                 height: 35px;

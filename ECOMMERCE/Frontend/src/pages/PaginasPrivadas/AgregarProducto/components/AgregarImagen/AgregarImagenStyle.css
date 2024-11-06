@@ -1,0 +1,49 @@
+.image-upload {
+    border: 2px dashed #FDC7E8;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    position: relative;
+    display: flex;
+}
+
+.custom-label {
+    cursor: pointer;
+    display: block;
+}
+
+.file-input { display: none; }
+
+.image-container {
+    position: relative;
+    margin-top: 10px;
+    display: flex; 
+}
+
+.requerido{
+
+    font-size: 15px;
+    color: #FF5EC0;
+}
+
+
+.image-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 12px;
+    z-index: 1;
+}

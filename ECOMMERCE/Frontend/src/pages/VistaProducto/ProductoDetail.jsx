@@ -29,14 +29,14 @@ export const ProductoDetail = ()=>{
                 </div>
                 <div className="features-container Responsive">
                     <h2 className="categorias Responsive" >Agenda</h2>   
-                    <h2 className="titulo Responsive">{storedDataProduct.data[0].descripcion}</h2>         
+                    <h2 className="titulo Responsive">{storedDataProduct.data[0].titulo}</h2>         
                     <h2 className="id-Producto Responsive">ID: {storedDataProduct.data[0].publicacion_id}</h2>
                     <hr />
                     <h2 className="Precio Responsive">${storedDataProduct.data[0].precio}</h2>
                     <hr />
                     <div className="buy-conditions ">
                         <h2 className="Stock"> 
-                            <img src={Stock_icon} alt="disponibilidad " /> Stock Disponible: <strong>5</strong>  </h2>
+                            <img src={Stock_icon} alt="disponibilidad " /> Stock Disponible: <strong>{storedDataProduct.data[0].stock}</strong>  </h2>
                         <h2 className="Envio "> 
                             <img src={shipping_icon} alt="envios" /> Envios a todo el pais  </h2>
                         <h2 className="garantia "> 

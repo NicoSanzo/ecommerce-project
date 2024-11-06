@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/PedidoFetchGenerico";
 import { useProductContent } from "../../Context/productDetailContext";
 import { useNavigate } from "react-router-dom";
 
-export const ProductCard = ({imagen,description,price,itemKey}) =>{
+export const ProductCard = ({imagen,titulo,price,itemKey}) =>{
 
 const {setDataProducto} = useProductContent()
 const [triggerFetch,setTriggerFetch]= useState(false);
@@ -34,7 +34,7 @@ useEffect(() => {
             
                 <div className="producto" onClick={mostrarDetalleProducto} >
                     <img src={imagen} loading="lazy" />
-                    <h2 className="descriptionStyle">{description}</h2>
+                    <h2 className="tituloStyle">{titulo}</h2>
                     <h2 className="stylePrice" > {price}</h2>
                     <h2 className="transferStyle">10% off con Transferencia</h2>
                     <ButtonVer/>            

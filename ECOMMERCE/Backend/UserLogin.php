@@ -23,7 +23,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['apellido']= $usuario['apellido'];
             $_SESSION['mail']= $usuario['mail'];
             $_SESSION['nombre']= $usuario['nombre'];
+            $_SESSION['id_user']= $usuario['id'];
             $_SESSION['hash'] = session_id();
+            
             $response['status'] = "success";
             
         } else {

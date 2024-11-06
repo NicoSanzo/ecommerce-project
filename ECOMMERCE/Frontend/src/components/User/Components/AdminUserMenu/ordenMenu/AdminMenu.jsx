@@ -2,6 +2,8 @@ import "./AdminMenuStyle.css";
 import downArrow from "../../../../../assets/down_arrow.svg";
 import IconUser from "../../../../../assets/Account_icon.svg"
 import { useAuth } from "../../../../../Context/authContext";
+import { AgregarProducto } from "../../../../../pages/PaginasPrivadas/AgregarProducto/AgregarProducto";
+import { Link, Navigate } from "react-router-dom";
 
 
 
@@ -12,6 +14,9 @@ export const AdminMenu = ({user}) =>{    //recibe como argumento una funcion de 
     const CerrarSession =()=>{
         logout();
     }
+
+    
+
 
     return (
         <>      
@@ -26,7 +31,7 @@ export const AdminMenu = ({user}) =>{    //recibe como argumento una funcion de 
                                 <li >Ventas</li>
                                 <li>Publicaciones</li>
                                 <li>Resumen</li>
-                                <li>Agregar Producto</li>
+                                <li> <Link to={"/AgregarProducto"}>productos</Link> </li>
                                 <li onClick={CerrarSession}>Salir</li>           
                             </ul>
                         </div>                   

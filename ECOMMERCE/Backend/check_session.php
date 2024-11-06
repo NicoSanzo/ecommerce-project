@@ -1,7 +1,6 @@
 <?php
 
-session_start();
-
+session_start();   
 if (isset($_SESSION['usuario'])) {
     $User=[];
     $User['usuario']=$_SESSION['usuario'];
@@ -9,9 +8,10 @@ if (isset($_SESSION['usuario'])) {
     $User['mail']= $_SESSION['mail'];
     $User['nombre']= $_SESSION['nombre'];
     $User['session_id']= $_SESSION['hash'];
+    $User['id_user']= $_SESSION['id_user'];
     echo json_encode($User);
 } else {
-    http_response_code(401); // No autenticado
-    echo json_encode(['error' => 'No autenticado']);
+    $response['error']='No autenticado';
+    echo json_encode($response);
 }
 ?>

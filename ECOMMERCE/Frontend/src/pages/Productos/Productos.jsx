@@ -43,7 +43,7 @@ export const Productos = () =>{
                         <ProductCard 
                             key={producto.id} 
                             imagen={producto.imagen} 
-                            description={producto.titulo} 
+                            titulo={producto.titulo} 
                             price={producto.precio} 
                             itemKey={producto.id}
                         />

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./inputTextStyle.css";
 
-
 export const InputText = ({ label_name, error, onChange, required, placeholder, value, name }) => {
 
     const handleChange = (event) => {

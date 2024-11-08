@@ -18,7 +18,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $usuario = mysqli_fetch_assoc($result);   
      
         // Comparar la contraseña hasheada
-        if (sha1($password) === $usuario['contrasena']) {
+        if (hash("sha512",$password) === $usuario['contrasena']) {
             $_SESSION['usuario'] = $usuario['username']; // Almacena los datos de usuario de la session
             $_SESSION['apellido']= $usuario['apellido'];
             $_SESSION['mail']= $usuario['mail'];
@@ -29,10 +29,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $response['status'] = "success";
             
         } else {
-            $response['error'] = "Contraseña incorrecta"; 
+            $response['error'] = "Usuario o contraseña Incorrecta"; 
         }
     } else {
-        $response['error'] = "Usuario o mail incorrecto"; 
+        $response['error'] = "Usuario o contraseña Incorrecta"; 
     }
 
     // Devolver la respuesta como JSON

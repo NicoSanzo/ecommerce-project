@@ -26,7 +26,7 @@ const[triggerfetchPublicacion,setTriggerFetchPublicaciones]=useState(false);
          <h2 className="titulo-publicaciones">PUBLICACIONES</h2>
          <div className="publicaciones-general-container">
 
-           {loading? <LoadingComponente/>: 
+           {loading? <LoadingComponente height={50} width={50}/>: 
                  data.data.length > 0 ? (
              data.data.map((publis) => (
                <PublicacionesCard

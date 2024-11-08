@@ -1,14 +1,16 @@
-import React, { useEffect, useState,useRef } from "react";
-import "./AgregarProductoStyle.css";
+import React, { useEffect, useRef, useState } from "react";
+import "./ModificarPublicacionStyle.css";
 import { InputText } from "./components/InputText/inputText";
 import { InputNumber } from "./components/inputSelect/inputNumber";
 import { useFetch } from "../../../hooks/PedidoFetchGenerico";
 import { Selects } from "./components/SelectMarca/Selects";
 import { ImageUploader } from "./components/AgregarImagen/AgregarImagen";
+import { LoadingComponente } from "../../../components/GenericLoadingComponent/LoadingComponent";
+import { GenericExitoso } from "../../../components/GenericExitoso/GenericExitoso";
 
 
 
-export const AgregarProducto = () => {
+export const ModificarPublicacion = ({ itemKey, onClose ,onSuccess }) => {
 
 
     const [formValues, setFormValues] = useState({
@@ -25,18 +27,47 @@ export const AgregarProducto = () => {
         marca_id: "",
         categoria_id: "",
         imagen: "",
-           
+        id_publicacion: "",
+        codigo_producto: ""     
     });
 
     const [errors, setErrors] = useState({});
     const [triggerfetch, setTriggerfetch] = useState(false);
+    
     const principal_container = useRef(null)
     const [submitted, setSubmitted] = useState(false); // Estado para controlar el envío
     const [errorEnvio, setErrorEnvio] = useState(false);
     const[FORMDATA,SetFormData]=useState({data:[]});
+    const { data: data_rellenar, loading: loading_relleno, error: error_relleno } = useFetch("api/fetch_publicaciones.php", "POST", { itemKey }, true);
 
-   
-    
+    // Cargar los datos en el formulario al recibir la respuesta
+    useEffect(() => {
+        if (data_rellenar && data_rellenar.data) {
+            const data = data_rellenar.data[0];
+            setFormValues({
+                titulo: data.titulo,
+                precio: data.precio.replace(",", "."),
+                stock: data.stock,
+                modelo: data.modelo,
+                alto: data.alto,
+                ancho: data.ancho,
+                profundidad: data.profundidad,
+                descripcion: data.descripcion,
+                peso: data.peso,
+                color: data.color,
+                marca_id: data.marca_id,
+                categoria_id: data.categoria_id,
+                imagen: data.imagen || null,
+                id_publicacion: data.id_publicacion,
+                codigo_producto:  data.codigo_producto
+            });
+/*
+            if (data.imagen) {
+                setImageToview(data.imagen);
+            }*/
+        }
+    }, [data_rellenar]);
+
     // Validaciones del formulario
     const validate = () => {
         const newErrors = {};
@@ -100,19 +131,9 @@ export const AgregarProducto = () => {
 
     useEffect(() => {
         const newErrors = validate(formValues);
+        setErrors(newErrors);
 
-        if (submitted) { // Solo valida si ya se ha intentado enviar  
-        setErrors(newErrors);  
-            if (Object.keys(newErrors).length === 0) {
-
-                principal_container.current.style.borderColor = "";
-                setErrorEnvio(false)
-            } else {
-                principal_container.current.style.borderColor = "red";
-                setErrorEnvio(true)
-            }
-        }
- }, [formValues]); /*
+       
         if (principal_container.current) {
             if (Object.keys(newErrors).length > 0) {
                 principal_container.current.style.borderColor = "red";
@@ -120,7 +141,7 @@ export const AgregarProducto = () => {
                 principal_container.current.style.borderColor = "";
             }
         }
-   */
+    }, [formValues]); 
 
 
     // Manejador de cambios en los inputs
@@ -131,48 +152,57 @@ export const AgregarProducto = () => {
         setFormValues((prev) => ({
             ...prev,
             [name]: value
-        }));
+        }));  
         
     };
+
     
 
     // Manejo del submit del formulario
     const handleSubmit = (event) => {
-
         event.preventDefault();
         setSubmitted(true);
         const validationErrors = validate();
 
         if (Object.keys(validationErrors).length === 0) {
-        
             const formData = new FormData();
 
+            // Agregar todos los valores del formulario a formData
             Object.keys(formValues).forEach((key) => {
                 formData.append(key, formValues[key]);
-            });
 
-            SetFormData(formData);
-            setTriggerfetch(true);  
-          
+            });
+            
+           SetFormData(formData)
+           console.log(FORMDATA);
+            
+            setTriggerfetch(true);
         } else {
             setErrors(validationErrors);
             setErrorEnvio(true);
             principal_container.current.style.borderColor = "red";
             
-        }   
-        
+        }
     };
 
-    
-    const { data, loading:loading_confirmar, error } = useFetch('api/alta_publicaciones.php', 'POST', FORMDATA, triggerfetch);
+
+    const { data, loading:loading_confirmar, error } = useFetch('api/modi_publicaciones.php', 'POST', FORMDATA, triggerfetch);
     console.log(data);
 
+    useEffect(() => {
+        if (data ) {
+            if(data.data==true){
+                onClose();
+                onSuccess()
+            }
+        }
+    }, [data]);
 
+    
 
     useEffect(() => {
         if (triggerfetch) {
             setTriggerfetch(false);
-            console.log(FORMDATA)
         }
     }, [data, error, triggerfetch]);
 
@@ -180,8 +210,9 @@ export const AgregarProducto = () => {
 
     return (
         <>
-       
-        <form onSubmit={handleSubmit} className="principal-container-agregar" ref={principal_container}>
+        {loading_relleno ? <LoadingComponente width={65} height={65}/>:
+        submitted &&  loading_confirmar? <LoadingComponente width={65} height={65}/> :
+        <form onSubmit={handleSubmit} className="principal-container-modificar" ref={principal_container}>
             <h2 className="titulo-principal">Modificar Publicación</h2>
 
             <div className="div-titulo-publi">
@@ -289,7 +320,7 @@ export const AgregarProducto = () => {
             </div>
 
             <h2>Descripción</h2>
-          
+            <div className="div-descripcion">
                 <textarea
                     className="Descripcion"
                     value={formValues.descripcion}
@@ -297,19 +328,18 @@ export const AgregarProducto = () => {
                     placeholder="Ingrese una descripcion..."
                     name="descripcion"
                 />
-            
+            </div>
             {errors.descripcion && <span className="error-message">{errors.descripcion}</span>}
 
             <div className="div-button">
-                <button className="botton-submit" type="submit">AGREGAR</button>
+                <button className="botton-submit" type="submit">MODIFICAR</button>
             </div>
             {errorEnvio && <div className="Verificar-Campos"> * VERIFIQUE LOS CAMPOS</div>}
         </form>
         
-        
+        }
            
         </>
     );
     
 }
-

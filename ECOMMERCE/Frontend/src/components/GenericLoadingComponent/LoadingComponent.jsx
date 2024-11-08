@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./LoadingComponentStyle.css";
 
 
-export const LoadingComponente = () =>{
+export const LoadingComponente = ({ height , width}) => {
+  const loadingRef = useRef(null);
 
-    return(
+  useEffect(() => {
+    if (loadingRef.current) {
+        loadingRef.current.style.height = `${height}px`; 
+        loadingRef.current.style.width = `${width}px`;
+    }
+  }, [height, width]); 
 
-        <div className="charging"></div>
-
-    )
-
-
-
-}
+  return (
+    <div className="charging" ref={loadingRef}>
+      
+    </div>
+  );
+};

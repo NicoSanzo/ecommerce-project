@@ -1,6 +1,5 @@
-import React, {useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import './AgregarImagenStyle.css';
-
 
 export const ImageUploader = ({ onChange, error, imagen }) => {
 

@@ -9,7 +9,8 @@ a{text-decoration: none;}
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 130px; 
+    height: 135px; 
+    max-height: 230;
     background-color: transparent;
     padding: 5px;
     border-radius: 5px;
@@ -19,19 +20,25 @@ a{text-decoration: none;}
     gap: 16px;
     cursor: pointer;
 
- 
-    .product-image {
-        width:18%;
-        height: 100%; /* Cambiado a auto para mantener la proporción */
-        max-height: 300px; /* Establece un máximo para que todas las imágenes tengan la misma altura */
-        object-fit: cover;
+    .image-container{
+        width:250px;
+        height: 120px; 
+        max-height: 300px;
         border-radius: 15px;
         box-shadow: 0 0 3px #cccccc;
         border-radius: 10px;
+        position: relative;
+        display: flex;
         padding: 5px;
-        margin-left: 10px;
-        
+        margin: 10px;
+       
+        .product-image {
+            width:100%;
+            height: 100%; 
+            object-fit: contain;
+        }
     }
+   
 
     .tituloStyle {
         font-family: "Questrial", sans-serif;
@@ -54,49 +61,88 @@ a{text-decoration: none;}
          
     }
 
-    .delete_button {
-        height: 32px;
-        width: 55px;
-        background-color: rgb(244, 124, 124);
+    .delete-button {
+        height: 35px;
+        width: 60px;
+        background-color: #FDC7E8;
         font-family: "Questrial", sans-serif;
         font-size: 15px;
         border-radius: 3px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-image: url("../../../../../assets/delete_icon.png");
+        background-image: url("../../../../../assets/delete_icon.svg");
         background-position: center;
-        background-size: contain;
+        background-size: 28px 28px;
         background-repeat: no-repeat;
         color: transparent; /* Oculta el texto por defecto */
         transition: 0.2s ease-in;
         position: relative;
         cursor: pointer;
         border: none;
-        box-shadow: 0 0 3px 0 black;
+        box-shadow: 0 0 2px 0 #888888;
         margin-right: 15px;
     }
     
-    .delete_button:hover {
-        width: 155px;
+    .delete-button:hover {
+        width: 150px;
         color: white; 
-        background-color: red;
+        background-color: #FF5EC0;
         background-image: none; 
         
     }
     
-    .delete_button::after {
+    .delete-button::after {
         content: "Eliminar"; 
+        position: absolute;
+        width: 60px;
+       
+    }
+
+    .modify-button {
+        height: 35px;
+        width: 35px;
+        padding: 10px;
+        background-color: #f3f3f3;
+        font-family: "Questrial", sans-serif;
+        font-size: 15px;
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../../../../../assets/modify_button.svg");
+        background-position: center;
+        background-size: 29px 29px;
+        background-repeat: no-repeat;
+        color: transparent; /* Oculta el texto por defecto */
+        transition: width 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        position: relative;
+        color: transparent;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 0 2px 0 #888888;
+        margin-right: 15px;
+    }
+    
+    .modify-button:hover {
+        width: 150px;
+        color: white; 
+        background-color: #8db19d;
+        background-image: none; 
+        
+    }
+    
+    .modify-button::after {
+        content: "Modificar"; 
         position: absolute;
        
     }
     
     
-    
     .stylePrice {
         font-family: "Questrial", sans-serif;
         font-weight: bolder;
-        color: #FF5EC0;
+        color: #87AA96;
         text-transform: none;
         text-align: center;
         font-size: 2.3vh;
@@ -106,8 +152,7 @@ a{text-decoration: none;}
         margin-left: 35px;
         box-shadow: 0 0 3px #cccccc;
         border-radius: 10px;
-        padding: 5px;
-      
+        padding: 5px;   
     }
     
     .stockStyle {
@@ -122,25 +167,21 @@ a{text-decoration: none;}
         border-radius: 10px;
         padding: 5px;
       
- 
     }   
 }
 
 .publicacion-card:hover{
-    height: 135px;
-    transition: 0.2s;
+    height: 148px;
+    transition: 0.2s ease-in;
  }
 
 
 @media (max-width: 900px) {
     .publicacion-card {
+        justify-content: center;
+        height: fit-content;
+
         flex-wrap: wrap;
-    }
-}
-
-@media (max-height: 900px) {
-    .publicacion-card {
-
         .tituloStyle {
             font-size: 2.5vw;
         }
@@ -150,5 +191,32 @@ a{text-decoration: none;}
         .stylePrice {
             font-size: 1.7vw;
         }
+
+        .delete-button {
+        
+            width: 35px;
+        }
+        .delete-button:hover {
+            width: 70px;
+            color: white; 
+            background-color: #FF5EC0;
+            background-image: none;   
+        }
+        .modify-button:hover {
+            width: 70px;
+        }
+
+
     }
+    .publicacion-card:hover{
+        height: fit-content;
+        transition: none;
+     }
+
+
+     
+    
+
+     
 }
+

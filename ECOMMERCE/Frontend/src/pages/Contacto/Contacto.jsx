@@ -5,6 +5,7 @@ import facebook_icon from "../../assets/facebook_logo_icon.svg";
 import mail_icon from "../../assets/Email_icon.svg";
 import instagram_icon from "../../assets/instagram_logo_circle.svg";
 import like_icon from "../../assets/like_icon.svg";
+import { LoadingComponente } from "../../components/GenericLoadingComponent/LoadingComponent";
 
 export const Contacto = ()=>{
 
@@ -80,6 +81,16 @@ export const Contacto = ()=>{
             setLoading(false);  
         }  
     };
+
+
+    useEffect(() => {
+        setNombre('');
+        setApellido('');
+        SetEmail('');
+        setTextArea('');
+     
+    }, [data])
+    
     
 
     return(
@@ -162,7 +173,10 @@ export const Contacto = ()=>{
                         Enviar
                         </button>
                         <div className="msjBox" >
-                            {loading && <h2 style={{transition: "0.3s ease-in-out"}}>Enviando...</h2>}
+                            {loading && 
+                                    <div style={{transition: "0.3s ease-in-out"}}>
+                                        <LoadingComponente/>
+                                    </div>}
                             {data && <h2 style={{transition:"0.3 ease", color: "#87AA96"}}> {data}</h2>} 
                         </div>
                 </form>

@@ -1,17 +1,13 @@
 .charging{
-
-    height: 30px;
-    width: 30px;
+    
     border: solid 3px #ff80ce;
-    border-right:none;
+    border-right: none;
     border-bottom: none;
-    box-shadow: 0 0 1px 0 ;
+    box-shadow: 0 0 1px 0;
     border-radius: 50%;
     animation: girar 1s linear infinite;
-    position: relative;
-    align-self: center;
-
-    
+    align-self: center; 
+    z-index: 35;
 }
 
 @keyframes girar {

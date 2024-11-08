@@ -20,7 +20,7 @@ return(
                 <ProductCard 
                     key={index} 
                     imagen={producto.foto} 
-                    description={producto.descripcion} 
+                    titulo={producto.descripcion} 
                     price={producto.precio}
                 />
             ))}

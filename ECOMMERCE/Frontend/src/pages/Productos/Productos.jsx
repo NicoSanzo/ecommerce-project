@@ -13,7 +13,7 @@ export const Productos = () =>{
 
     const [listadodeProductos,setListadodeproductos]=useState({data:[]});
     const {FoundData} = useSearch();
-    const {loading}= useSearch();
+    const {cargando}= useSearch();
     const {Error}= useSearch();
 
        useEffect(() => {
@@ -36,8 +36,8 @@ export const Productos = () =>{
                 </div>
                 <div className="products-container">
                     
-                {loading ? (
-                    <LoadingComponente/>
+                {cargando ? (
+                    <LoadingComponente height={50} width={50}/>
                 ) : listadodeProductos.data.length > 0 ? (
                     listadodeProductos.data.map((producto) => (
                         <ProductCard 

@@ -68,7 +68,7 @@ $query = "INSERT INTO producto VALUES (
 $result = mysqli_query($conn, $query);
 
 if(!$result){
-    $response['error'] = mysqli_error($conn);
+    $response['error'] = mysqli_error($conn) ;
     echo json_encode($response);
 
     exit();
@@ -83,11 +83,11 @@ $imagen = $imageUrl;  // Usa la URL de la imagen cargada en vez de $_POST['image
 $descripcion = retornarValor("descripcion");
 
 // Insertar en la tabla publicacion
-$query = "INSERT INTO publicacion VALUES (0, '$titulo', '$precio', '$stock', '$imagen', " . ($descripcion ? "'$descripcion'" : "NULL") . ");";
+$query = "INSERT INTO publicacion VALUES (NULL, '$titulo', '$precio', '$stock', '$imagen', " . ($descripcion ? "'$descripcion'" : "NULL") . ", 0);";
 $result = mysqli_query($conn, $query);
 
 if(!$result){
-    $response['error'] = mysqli_error($conn);
+    $response['error'] = mysqli_error($conn). "fallo en publicacion" . $precio. "precio" . $stock . "stock" . $descripcion ;
     echo json_encode($response);
     exit();
 }

@@ -22,14 +22,28 @@ a{text-decoration: none;}
     gap: 16px;
     cursor: pointer;
 
-   
+
+   .image-container{
+        width: 96%;
+        height: 45%;
+        max-height: 300px;
+        padding: 8%;
+        display: flex;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 3px 0 #dddddd;
     img {
         width: 100%;
-        height: 50%; /* Cambiado a auto para mantener la proporción */
+        height: 100%; /* Cambiado a auto para mantener la proporción */
         max-height: 300px; /* Establece un máximo para que todas las imágenes tengan la misma altura */
-        object-fit: cover;
-        border-radius: 15px;
+        object-fit:contain;
+        
     }
+
+
+
+   }
+    
 
     .tituloStyle {
         font-family: "Caveat";

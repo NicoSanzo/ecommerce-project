@@ -16,9 +16,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     // Verificar si el usuario existe
     if ($result && mysqli_num_rows($result) > 0) {
         $usuario = mysqli_fetch_assoc($result);   
-     
+        $password = hash("sha512", $password);
         // Comparar la contraseña hasheada
-        if (hash("sha512",$password) === $usuario['contrasena']) {
+        if ($password === $usuario['contrasena']) {
             $_SESSION['usuario'] = $usuario['username']; // Almacena los datos de usuario de la session
             $_SESSION['apellido']= $usuario['apellido'];
             $_SESSION['mail']= $usuario['mail'];
@@ -26,13 +26,26 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $_SESSION['id_user']= $usuario['id'];
             $_SESSION['hash'] = session_id();
             
+            mysqli_free_result($result);
+            $id_usuario = $usuario['id'];
+            $query = "";
+
+            $query = "SELECT * FROM administrador WHERE id = '$id_usuario';";
+            $result = mysqli_query($conn, $query);
+            if(mysqli_num_rows($result) != 1){
+                $_SESSION['admin'] = false;
+            }
+            else{
+                $_SESSION['admin'] = true;
+            }
+
             $response['status'] = "success";
             
         } else {
-            $response['error'] = "Usuario o contraseña Incorrecta"; 
+            $response['error'] = "Usuario o mail incorrecto"; 
         }
     } else {
-        $response['error'] = "Usuario o contraseña Incorrecta"; 
+        $response['error'] = "Usuario o mail incorrecto"; 
     }
 
     // Devolver la respuesta como JSON

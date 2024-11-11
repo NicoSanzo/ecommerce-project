@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useFetch = (url, method = 'POST', body = null, triggerFetch = false) => {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {

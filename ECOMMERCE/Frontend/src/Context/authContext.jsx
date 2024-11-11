@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
 
    //console.log(datauser);
    console.log(autenticado);
+   console.log(sessionData)
     
    /* Verifica que la session tenga datos y que exita un id de session*/
 
@@ -24,22 +25,17 @@ export const AuthProvider = ({ children }) => {
             setAutenticado(true);
             setdatauser(sessionData); // Almacena la información del datauser
             localStorage.setItem('autenticacion', autenticado); // guardo en el local storage para que cuando se recarge la pagina no te lleve al home
+            localStorage.setItem('isAdmin',sessionData.admin);
+            localStorage.setItem('sessionId',sessionData.hash);
         } else {
             setAutenticado(false);
             setdatauser(null);
             localStorage.removeItem('autenticacion');
+            localStorage.removeItem('isAdmin');
+            localStorage.removeItem('sessionId');
             setCheckSessionTrigger(true);
         }
     }, [sessionData]);
-
-
-    //console.log(datauser)
-      /* Ejecuta el la consulta que verifica la sesion en el servido (PHP)*/
-    /*
-    useEffect(() => {
-        setCheckSessionTrigger(true);
-    }, []);*/
-
 
     
     /*establece la autenticacion cuando se loguea y se verifican los datos ingresados en la pagina de logina(nota: en la pagina de login se realiza un pedido para verificar y establecer la session)*/ 

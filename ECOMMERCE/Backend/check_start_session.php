@@ -9,6 +9,8 @@ if (isset($_SESSION['usuario'])) {
     $User['nombre']= $_SESSION['nombre'];
     $User['session_id']= $_SESSION['hash'];
     $User['id_user']= $_SESSION['id_user'];
+    $User['admin']= $_SESSION['admin'];
+
     echo json_encode($User);
 } else {
     $response['error']='No autenticado';

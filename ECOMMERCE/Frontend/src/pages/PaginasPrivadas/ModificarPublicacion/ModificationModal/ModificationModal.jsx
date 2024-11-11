@@ -10,7 +10,9 @@ export const ModificationModal = ({isOpen ,children ,onClose}) => {
   return (
     <div className="modal-mod">
       <div className="mod-modal-content">
+       
         <button className="close-button" onClick={onClose}>X</button>
+          
         {children}
       </div>
     </div>

@@ -5,13 +5,15 @@ import { useAuth } from "../../Context/authContext";
 import { useFetch } from "../../hooks/PedidoFetchGenerico";
 import { LoadingComponente } from "../../components/GenericLoadingComponent/LoadingComponent";
 
-export const Login = ({ onClose }) => {
+export const Login = ({ onClose, Registrate }) => {
     const { login } = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [Error, setError] = useState("");
     const [enviar, setEnviar] = useState(false);
     const [Loading, setLoading] = useState(false);
+    
+
 
     const iniciarSesion = (e) => {
         e.preventDefault();
@@ -23,13 +25,11 @@ export const Login = ({ onClose }) => {
             return;
         }
         setLoading(true);
-        setEnviar(true);
-        
+        setEnviar(true);    
     };
 
     const { data, loading, error } = useFetch('/api/UserLogin.php', 'POST', { username, password }, enviar);
     
-
     useEffect(() => {
         if (data) {
             if (data.error) {
@@ -50,14 +50,23 @@ export const Login = ({ onClose }) => {
     }, [data]);
 
 
+    const efectRegistro =()=>{
+
+        Registrate();
+
+    }
+
+
 
     return (
         <>
             <div className="Container-Principal">
                 <h2 className="title">Iniciar Sesion</h2>
                 <h3 className="registro">
-                    ¿Es tu Primera Vez? <Link to="/register">Regístrate</Link>
+                    ¿Es tu Primera Vez? <div  className="Registrarse" onClick={efectRegistro} >Regístrate</div>
                 </h3>
+
+                
                 <form className="loginform" onSubmit={iniciarSesion}>
                     <input
                         type="text"
@@ -73,7 +82,7 @@ export const Login = ({ onClose }) => {
                     />
                     <Link to="/forgot-password">¿Olvidaste tu Contraseña?</Link>
                     <div className="error-msg">
-                    {Loading && <LoadingComponente />}
+                    {Loading && <LoadingComponente width={25} height={25} />}
                     {Error && <span>{Error}</span>}
                     </div>                   
                     <button type="submit">Iniciar Sesion</button>              

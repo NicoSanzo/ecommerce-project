@@ -5,6 +5,9 @@ import { InputNumber } from "./components/inputSelect/inputNumber";
 import { useFetch } from "../../../hooks/PedidoFetchGenerico";
 import { Selects } from "./components/SelectMarca/Selects";
 import { ImageUploader } from "./components/AgregarImagen/AgregarImagen";
+import { LoadingComponente } from "../../../components/GenericLoadingComponent/LoadingComponent";
+import { VentanaModal } from "../../../components/GenericModal/VentanaModal";
+import { GenericExitoso } from "../../../components/GenericExitoso/GenericExitoso";
 
 
 
@@ -34,7 +37,8 @@ export const AgregarProducto = () => {
     const [submitted, setSubmitted] = useState(false); // Estado para controlar el envío
     const [errorEnvio, setErrorEnvio] = useState(false);
     const[FORMDATA,SetFormData]=useState({data:[]});
-
+    const [isSubmittedSuccessfully, setIsSubmittedSuccessfully] = useState(false); 
+    const [isSuccess, setIsSuccess]=useState(false);
    
     
     // Validaciones del formulario
@@ -93,12 +97,15 @@ export const AgregarProducto = () => {
         if (!formValues.marca_id) {
             newErrors.marca = "* Seleccione una marca";
         }
-
         return newErrors;
     };
 
+    
 
     useEffect(() => {
+
+        if (isSubmittedSuccessfully==true) return;
+
         const newErrors = validate(formValues);
 
         if (submitted) { // Solo valida si ya se ha intentado enviar  
@@ -112,15 +119,8 @@ export const AgregarProducto = () => {
                 setErrorEnvio(true)
             }
         }
- }, [formValues]); /*
-        if (principal_container.current) {
-            if (Object.keys(newErrors).length > 0) {
-                principal_container.current.style.borderColor = "red";
-            } else {
-                principal_container.current.style.borderColor = "";
-            }
-        }
-   */
+ }, [formValues]); 
+
 
 
     // Manejador de cambios en los inputs
@@ -160,27 +160,52 @@ export const AgregarProducto = () => {
             principal_container.current.style.borderColor = "red";
             
         }   
-        
     };
 
     
     const { data, loading:loading_confirmar, error } = useFetch('api/alta_publicaciones.php', 'POST', FORMDATA, triggerfetch);
-    console.log(data);
-
-
+   
 
     useEffect(() => {
-        if (triggerfetch) {
-            setTriggerfetch(false);
-            console.log(FORMDATA)
+
+        if (data && !error) {
+            setIsSubmittedSuccessfully(true); // Marca como exitoso el envío
+            setFormValues({
+              titulo: "",
+              precio: "",
+              stock: "",
+              modelo: "",
+              alto: "",
+              ancho: "",
+              profundidad: "",
+              descripcion: "",
+              peso: "",
+              color: "",
+              marca_id: "",
+              categoria_id: "",
+              imagen: "",
+            });
+            setIsSuccess(true);
         }
+        if (triggerfetch) {
+            setTriggerfetch(false);   
+        }  
+
+       
     }, [data, error, triggerfetch]);
 
-
+    const handleCloseModal = () => {
+        setIsSuccess(false); // Cierra el modal cuando se presiona "OK"
+      };
 
     return (
         <>
-       
+        {loading_confirmar && 
+            <VentanaModal Abierto={loading_confirmar}  >
+                  <LoadingComponente width={45} height={45}/>
+            </VentanaModal>}
+        {<GenericExitoso isSuccess={isSuccess}  onClose={handleCloseModal}/>}
+          
         <form onSubmit={handleSubmit} className="principal-container-agregar" ref={principal_container}>
             <h2 className="titulo-principal">Modificar Publicación</h2>
 
@@ -203,7 +228,6 @@ export const AgregarProducto = () => {
                     imagen={formValues.imagen}
                     onChange={handleChange}
                     name="imagen"
-                    //ref= {imgRef}
                 />
             </div>
 
@@ -301,7 +325,7 @@ export const AgregarProducto = () => {
             {errors.descripcion && <span className="error-message">{errors.descripcion}</span>}
 
             <div className="div-button">
-                <button className="botton-submit" type="submit">AGREGAR</button>
+                <button className="botton-submit-agregar" type="submit">AGREGAR</button>
             </div>
             {errorEnvio && <div className="Verificar-Campos"> * VERIFIQUE LOS CAMPOS</div>}
         </form>

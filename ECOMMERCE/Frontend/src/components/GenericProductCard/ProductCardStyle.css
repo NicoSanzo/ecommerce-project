@@ -53,6 +53,7 @@ a{text-decoration: none;}
         text-align: center;
         font-size: 24;
         padding: 1%;
+        height: 60px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;

@@ -4,12 +4,18 @@ import IconUser from "../../assets/Account_icon.svg";
 import { useLoginModal } from "../../Context/LoginPopContext";
 import { useAuth } from "../../Context/authContext";
 import { AdminMenu } from "./Components/AdminUserMenu/ordenMenu/AdminMenu";
+import { ClientMenu } from "./Components/ClientUserMenu/ClientMenu";
 
 export const UserAccount = () =>{
 
    const {autenticado}= useAuth();
    const {datauser} =  useAuth();
    const { openModal } = useLoginModal(); // Usar la función para abrir el modal
+    const isAdmin = localStorage.getItem('isAdmin');
+    const hash = localStorage.getItem('sessionId');
+   
+
+
 
     return(
         <>
@@ -21,10 +27,14 @@ export const UserAccount = () =>{
                  </div>
             </div>
             }
-            {autenticado &&
+            {autenticado && 
             <div  className="userLogin" >
-                 <div className="container-login" >         
-                    <AdminMenu user={datauser.usuario}/>  
+                
+                 <div className="container-login" >  
+                 {hash &&  isAdmin=="true" &&  <AdminMenu user={datauser.usuario}/>}
+                 {hash && isAdmin=="false" && <ClientMenu user={datauser.nombre}/>}
+                    
+
                  </div>
             </div>
             }

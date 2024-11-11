@@ -25,7 +25,7 @@ export const ProductoDetail = ()=>{
         <div className="general-product-container">
             <div className="product-container">
                 <div className="imagen-container">
-                    <Carrousel ImagenesCarrousel={imagenes} autoslide={false}/>                
+                    <Carrousel ImagenesCarrousel={imagenes} autoslide={false} />                
                 </div>
                 <div className="features-container Responsive">
                     <h2 className="categorias Responsive" >Agenda</h2>   

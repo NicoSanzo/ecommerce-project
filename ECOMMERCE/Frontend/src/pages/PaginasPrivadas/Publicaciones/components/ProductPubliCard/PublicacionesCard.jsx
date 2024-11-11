@@ -77,9 +77,13 @@ useEffect(() => {
  }
 
 
-const showSucces=()=>{
+ const showSucces = () => {
   setisSuccesOpenModal(true);
- }
+}
+
+const closeSuccessModal = () => {
+  setisSuccesOpenModal(false); // Resetear el estado al cerrar el modal
+}
 
  return(
         <>
@@ -100,10 +104,10 @@ const showSucces=()=>{
                     onConfirm={ConfirmarEliminacion} 
                 />
 
-                <ModificationModal isOpen={isModificationModalOpen} onClose={closeModal} >
+                <ModificationModal isOpen={isModificationModalOpen} onClose={closeModal}  >
                         <ModificarPublicacion itemKey={itemKey} onClose={closeModal} onSuccess={showSucces} />
                  </ModificationModal>
-                 <GenericExitoso onSuccess={isSuccesOpenModal}></GenericExitoso>
+                 <GenericExitoso isSuccess={isSuccesOpenModal} onClose={closeSuccessModal} />
             
         </>
 

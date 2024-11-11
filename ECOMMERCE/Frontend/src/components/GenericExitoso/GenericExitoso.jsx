@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import './GenericExitosoStyle.css';
 
-export function GenericExitoso({ onSuccess }) {
-  const [visible, setVisible] = useState(false);
 
+export function GenericExitoso({ isSuccess, onClose }) {
+  const [visible, setVisible] = useState(false);
   
+
   useEffect(() => {
-    if (onSuccess) {
-   
+    if (isSuccess) {
       setVisible(true);
     }
-  }, [onSuccess]); 
+  }, [isSuccess]);
 
-  const onClose = () => {
-    setVisible(false); 
+  const handleClose = () => {
+    setVisible(false);
+    onClose(); 
   };
 
-  if (!onSuccess) return null;
-
+  if (!isSuccess) return null;
 
   return (
+
+<div className={`container-opaco ${visible ? 'visible' : 'hidden'}`}>
     <div className={`success-container ${visible ? 'visible' : ''}`}>
-      Modificación realizada con éxito!
-      <button className="close-button-success" onClick={onClose}>X</button>
+      <div className='success-logo-container'></div>
+      <p className='text-success-container'>¡Modificación realizada con éxito!</p>
+      <div className='button-container'>
+        <button className="close-button-success" onClick={handleClose}>OK</button>
+      </div>
     </div>
+</div>
   );
 }

@@ -8,13 +8,13 @@ import { LoadingComponente } from "../../../components/GenericLoadingComponent/L
 export const Publicaciones=()=> {
 
 
-const[triggerfetchPublicacion,setTriggerFetchPublicaciones]=useState(false);
+const[triggerfetchPublicaciones,setTriggerFetchPublicaciones]=useState(false);
 
     useEffect(() => {
       setTriggerFetchPublicaciones(true);  
     }, [])
 
-    const {data,loading,error}=useFetch("api/Publicaciones.php","POST",null,triggerfetchPublicacion);
+    const {data,loading,error}=useFetch("api/Publicaciones.php","POST",null,triggerfetchPublicaciones);
     
       if (error) {
         return <div>Error al cargar las publicaciones.</div>;
@@ -27,7 +27,7 @@ const[triggerfetchPublicacion,setTriggerFetchPublicaciones]=useState(false);
          <div className="publicaciones-general-container">
 
            {loading? <LoadingComponente height={50} width={50}/>: 
-                 data.data.length > 0 ? (
+                data && data.data.length > 0 ? (
              data.data.map((publis) => (
                <PublicacionesCard
                  itemKey={publis.id}

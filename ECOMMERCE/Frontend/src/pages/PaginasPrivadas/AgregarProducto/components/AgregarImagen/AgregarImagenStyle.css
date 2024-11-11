@@ -19,6 +19,8 @@
     position: relative;
     margin-top: 10px;
     display: flex; 
+    box-shadow: 0 0 3px 0 #aaaaaa;
+    border-radius: 5px;
 }
 
 .requerido{
@@ -29,9 +31,11 @@
 
 
 .image-container img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 5px;
+    object-fit:contain;
+    
 }
 
 .remove-button {

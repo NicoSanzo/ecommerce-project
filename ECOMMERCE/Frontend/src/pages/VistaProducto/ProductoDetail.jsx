@@ -6,7 +6,7 @@ import Shield_icon from "../../assets/Shield_icon.svg";
 import "./ProductoDetailStyle.css";
 import { useProductContent } from "../../Context/productDetailContext";
 import { Carrousel } from "../../components/GenericCarrousel/Carrousel";
-import { FichaTecnica } from "./Components/FichaTecnica/FichaTecnia";
+import { FichaTecnica } from "./Components/FichaTecnica/FichaTecnica";
 
 
 
@@ -44,7 +44,7 @@ export const ProductoDetail = ()=>{
                     </div>
                 </div>
                 <div className="Especificaciones">
-                   <FichaTecnica Datos={storedDataProduct}/>
+                   <FichaTecnica Datos={storedDataProduct}/>               
                 </div>
                 <div className="Description">
                     <h2> Descripcion</h2>

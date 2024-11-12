@@ -24,7 +24,7 @@ export const ImageUploader = ({ onChange, error, imagen }) => {
 
 const handleRemoveImage = () => {
     setImagetoview(null);
-    onChange && onChange(imagen); // Pasamos null al componente padre si se elimina la imagen
+    onChange && onChange({ name: "imagen", value: null }); // Pasamos null al componente padre si se elimina la imagen
 };
 
     return (

@@ -73,6 +73,11 @@ export const AgregarProducto = () => {
             newErrors.modelo = "* Debe contener hasta 25 caracteres";
         }
 
+        if (!formValues.imagen) {
+            newErrors.imagen = "* La imagen es requerida";
+        } 
+
+
         const medidas = [formValues.alto, formValues.ancho, formValues.profundidad, formValues.peso];
         medidas.forEach((value) => {
             if (value > 1000) {
@@ -204,7 +209,7 @@ export const AgregarProducto = () => {
             <VentanaModal Abierto={loading_confirmar}  >
                   <LoadingComponente width={45} height={45}/>
             </VentanaModal>}
-        {<GenericExitoso isSuccess={isSuccess}  onClose={handleCloseModal}/>}
+        {<GenericExitoso isSuccess={isSuccess}  onClose={handleCloseModal} Leyenda={"¡Producto Agregado Con Exito!"}/>}
           
         <form onSubmit={handleSubmit} className="principal-container-agregar" ref={principal_container}>
             <h2 className="titulo-principal">Modificar Publicación</h2>
@@ -228,6 +233,7 @@ export const AgregarProducto = () => {
                     imagen={formValues.imagen}
                     onChange={handleChange}
                     name="imagen"
+                    error={errors.imagen}
                 />
             </div>
 

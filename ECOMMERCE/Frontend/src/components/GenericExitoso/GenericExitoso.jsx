@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './GenericExitosoStyle.css';
 
 
-export function GenericExitoso({ isSuccess, onClose }) {
+export function GenericExitoso({ isSuccess, onClose, Leyenda }) {
   const [visible, setVisible] = useState(false);
   
 
@@ -24,7 +24,7 @@ export function GenericExitoso({ isSuccess, onClose }) {
 <div className={`container-opaco ${visible ? 'visible' : 'hidden'}`}>
     <div className={`success-container ${visible ? 'visible' : ''}`}>
       <div className='success-logo-container'></div>
-      <p className='text-success-container'>¡Modificación realizada con éxito!</p>
+      <p className='text-success-container'>{Leyenda}</p>
       <div className='button-container'>
         <button className="close-button-success" onClick={handleClose}>OK</button>
       </div>

@@ -1,11 +1,30 @@
-import React from "react";
-import "./FichaTecnica.css"
-
+import React, { useState } from "react";
+import "./FichaTecnicaStyle.css"
+import {Agenda3d} from "../../../../components/Generic3dImage/Agenda3d"
+import { Agenda3dModal } from "../Agenda3dModal/Agenda3dModal";
 
 export const FichaTecnica = ({Datos})=>{
 
 
     const datos= Datos.data[0];
+
+
+    const [isModificationModalOpen, setIsModificationModalOpen] = useState(false);
+
+
+    const AbrirAgenda3d=()=>{
+
+        setIsModificationModalOpen(true);
+
+    }
+
+    
+    const closeModal =()=>{
+    setIsModificationModalOpen(false);
+   }
+
+
+
 
     return(
 
@@ -50,6 +69,15 @@ export const FichaTecnica = ({Datos})=>{
                         </ul>
                     }
             </div>   
+
+            <div className="contendor-boton-agenda">    
+                <button className="DiseñarAgenda" onClick={AbrirAgenda3d}></button>
+                <h2>Diseña Tu Agenda</h2>
+            </div> 
+
+            <Agenda3dModal isOpen={isModificationModalOpen} onClose={closeModal}>
+                    <Agenda3d/> 
+            </Agenda3dModal>
          
         </>
     )

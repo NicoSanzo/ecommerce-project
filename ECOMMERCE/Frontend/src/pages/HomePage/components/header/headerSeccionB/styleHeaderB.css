@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     top:0;
-    z-index: 15;
+    z-index: 100;
             
     /***LOGO EMPRESA***/
 
@@ -62,7 +62,7 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-        gap: 30px;     
+        gap: 30px;    
     }
 } 
 
@@ -85,7 +85,7 @@
         .user-icons{
             grid-column: 3/3;
             grid-row: 1/2;
-            gap: 20px;
+            gap: 0px;
         }
     }   
 }

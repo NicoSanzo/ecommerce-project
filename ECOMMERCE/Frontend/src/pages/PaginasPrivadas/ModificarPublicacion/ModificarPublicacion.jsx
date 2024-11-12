@@ -6,7 +6,6 @@ import { useFetch } from "../../../hooks/PedidoFetchGenerico";
 import { Selects } from "./components/SelectMarca/Selects";
 import { ImageUploader } from "./components/AgregarImagen/AgregarImagen";
 import { LoadingComponente } from "../../../components/GenericLoadingComponent/LoadingComponent";
-import { GenericExitoso } from "../../../components/GenericExitoso/GenericExitoso";
 
 
 
@@ -61,13 +60,10 @@ export const ModificarPublicacion = ({ itemKey, onClose ,onSuccess }) => {
                 id_publicacion: data.id_publicacion,
                 codigo_producto:  data.codigo_producto
             });
-/*
-            if (data.imagen) {
-                setImageToview(data.imagen);
-            }*/
         }
     }, [data_rellenar]);
 
+    
     // Validaciones del formulario
     const validate = () => {
         const newErrors = {};
@@ -99,6 +95,10 @@ export const ModificarPublicacion = ({ itemKey, onClose ,onSuccess }) => {
         } else if (formValues.modelo.length > 25) {
             newErrors.modelo = "* Debe contener hasta 25 caracteres";
         }
+
+        if (!formValues.imagen) {
+            newErrors.imagen = "* La imagen es requerida";
+        } 
 
         const medidas = [formValues.alto, formValues.ancho, formValues.profundidad, formValues.peso];
         medidas.forEach((value) => {
@@ -234,7 +234,7 @@ export const ModificarPublicacion = ({ itemKey, onClose ,onSuccess }) => {
                     imagen={formValues.imagen}
                     onChange={handleChange}
                     name="imagen"
-                    //ref= {imgRef}
+                    error={errors.imagen}
                 />
             </div>
 

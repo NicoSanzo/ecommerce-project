@@ -11,6 +11,7 @@
     justify-content: center;
     font-family: "Quicksand", sans-serif;
    
+   
 
     .product-container{
 
@@ -22,13 +23,14 @@
         border-radius: 15px;
         display: flex;
         justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
         padding: 1%;
         gap: 30px;
 
              .imagen-container{
                 
-                 width: 700px;
+                 width: 750px;
                  min-width: 400px;
                  max-width: 700px;
                  min-height: 550px;
@@ -147,8 +149,6 @@
 
 
                     }
-                  
-
 
         }
 
@@ -162,7 +162,7 @@
             padding: 1%;
             align-items: normal;  
             gap:60px; 
-
+            
 
         }
 

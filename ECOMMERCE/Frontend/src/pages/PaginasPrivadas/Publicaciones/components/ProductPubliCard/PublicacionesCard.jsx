@@ -107,7 +107,7 @@ const closeSuccessModal = () => {
                 <ModificationModal isOpen={isModificationModalOpen} onClose={closeModal}  >
                         <ModificarPublicacion itemKey={itemKey} onClose={closeModal} onSuccess={showSucces} />
                  </ModificationModal>
-                 <GenericExitoso isSuccess={isSuccesOpenModal} onClose={closeSuccessModal} />
+                 <GenericExitoso isSuccess={isSuccesOpenModal} onClose={closeSuccessModal} Leyenda={"¡Producto Modificado Con Exito!"} />
             
         </>
 

@@ -3,11 +3,11 @@ import './GenericExitosoStyle.css';
 
 
 export function GenericExitoso({ isSuccess, onClose, Leyenda }) {
+  
   const [visible, setVisible] = useState(false);
   
-
   useEffect(() => {
-    if (isSuccess) {
+    if (isSuccess==true) {
       setVisible(true);
     }
   }, [isSuccess]);

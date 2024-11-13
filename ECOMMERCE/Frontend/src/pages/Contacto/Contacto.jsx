@@ -42,7 +42,6 @@ export const Contacto = ()=>{
     const[data,setData]=useState(null);
     const[error,setError]=useState(null);
     const[loading, setLoading]= useState(false);
-    const [msgbox,setMensaje]=useState(null);
 
 
     useEffect (()=>{
@@ -175,7 +174,7 @@ export const Contacto = ()=>{
                         <div className="msjBox" >
                             {loading && 
                                     <div style={{transition: "0.3s ease-in-out"}}>
-                                        <LoadingComponente/>
+                                        <LoadingComponente width={20} height={20}/>
                                     </div>}
                             {data && <h2 style={{transition:"0.3 ease", color: "#87AA96"}}> {data}</h2>} 
                         </div>

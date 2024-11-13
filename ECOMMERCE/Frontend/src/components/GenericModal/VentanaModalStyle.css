@@ -1,5 +1,5 @@
 
-.modal-overlay {
+.modal-overlay-generic {
   
   
   position: fixed;
@@ -7,11 +7,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.098); /* Fondo opaco */
+  background-color: rgba(0, 0, 0, 0.098); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
   
   font-family: "Quicksand", sans-serif;
 

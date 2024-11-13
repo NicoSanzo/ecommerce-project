@@ -20,7 +20,7 @@
         exit();
     }
     $fila = mysqli_fetch_assoc($result);
-    mysql_free_result($result);
+    mysqli_free_result($result);
     $id_producto = $fila['producto_codigo'];
 
     $query = "SELECT * FROM producto WHERE codigo = '$id_producto';";
@@ -31,7 +31,7 @@
         exit();
     }
     $fila = mysqli_fetch_assoc($result);
-    mysql_free_result($result);
+    mysqli_free_result($result);
 
     $object = new stdClass();
     $object->codigo_producto = $fila['codigo'];
@@ -54,7 +54,7 @@
         exit();
     }
     $fila = mysqli_fetch_assoc($result);
-    mysql_free_result($result);
+    mysqli_free_result($result);
 
     $object->id_publicacion = $fila['id'];
     $object->titulo = $fila['titulo'];

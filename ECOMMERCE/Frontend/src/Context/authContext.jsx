@@ -15,8 +15,8 @@ export const AuthProvider = ({ children }) => {
     const { data: sessionData } = useFetch('/api/check_start_session.php', 'POST', null, checkSessionTrigger);
 
    //console.log(datauser);
-   console.log(autenticado);
-   console.log(sessionData)
+   //console.log(autenticado);
+   //console.log(sessionData)
     
    /* Verifica que la session tenga datos y que exita un id de session*/
 

@@ -27,7 +27,7 @@ export const ClientMenu = ({user}) =>{    //recibe como argumento una funcion de
                     </div>
                             <ul className="Desplegable">
                                 <li>Compras</li>
-                                <li>Mi perfil</li>          
+                                <li> <Link to="/MiPerfil"> Mi perfil </Link></li>          
                                 <li onClick={CerrarSession}>Salir</li>           
                             </ul>
                         </div>                   

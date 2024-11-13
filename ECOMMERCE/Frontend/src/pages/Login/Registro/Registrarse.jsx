@@ -62,7 +62,7 @@ export const Registrarse = ({ Logueate }) => {
     if (!formValues.celular) {
       newErrors.celular = "* Debe ingresar un celular (sin guiones)";
     } else if (formValues.celular.length > 15) {
-      newErrors.celular = "* Hasta 8 caracteres";
+      newErrors.celular = "* Hasta 15 caracteres";
     }
 
     if (!ExpresionUsuario.test(formValues.usuario)) {
@@ -145,7 +145,6 @@ useEffect(() => {
         celular: "",
         contraseña: "",
         repetirContraseña: "",
-
       });
       setIsSubmittedSuccessfully(true);
     }

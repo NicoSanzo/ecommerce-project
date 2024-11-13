@@ -30,10 +30,10 @@ export const Productos = () =>{
                     <h2> ORDENAR POR: </h2>
                    {<OrdenMenu />}                                 {/*Este componente ejecuta la consulta de busqueda de productos, no se ejecuta al montar el componentem. es util para evitar 2 consultas a la base de datos*/}
                 </div>
-                <div className="filter-menu-container">
-                    <FilterCategorias/>
+                {/*<div className="filter-menu-container">
+                    {<FilterCategorias/>}
                     <FilterModelo/>  
-                </div>
+                </div>*/}
                 <div className="products-container">
                     
                 {cargando ? (

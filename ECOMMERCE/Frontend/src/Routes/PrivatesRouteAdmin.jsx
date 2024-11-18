@@ -5,9 +5,9 @@ import { useAuth } from '../Context/authContext';
 
 export const PrivateRouteAdmin = () => {
     
-    const islogged=localStorage.getItem('autenticacion'); 
-    const isAdmin=localStorage.getItem('isAdmin');
-    const hash=localStorage.getItem('sessionId');
+    const islogged=sessionStorage.getItem('autenticacion'); 
+    const isAdmin=sessionStorage.getItem('isAdmin');
+    const hash=sessionStorage.getItem('sessionId');
 
     return (islogged && isAdmin=="true" && hash ? <Outlet /> : <Navigate to="/home" />);
 };

@@ -10,7 +10,7 @@ import { GenericExitoso } from "../../../../../components/GenericExitoso/Generic
 
 
 
-export const PublicacionesCard = ({imagen,titulo,price,itemKey,stock}) =>{
+export const PublicacionesCard = ({imagen,titulo,price,itemKey,stock,ActualizarPublicaciones}) =>{
 
 const {setDataProducto} = useProductContent()
 const [triggerFetch,setTriggerFetch]= useState(false);
@@ -18,6 +18,7 @@ const [deleteTrigger,setDeleteTrigger]=useState(false);
 const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
 const [isModificationModalOpen, setIsModificationModalOpen] = useState(false);
 const [isSuccesOpenModal, setisSuccesOpenModal] = useState(false);
+const [isSuccesOpenDeleteModal, setisSuccesDeleteOpenModal] = useState(false);
 
 
 
@@ -52,6 +53,7 @@ const ModalDeEliminacion =(event)=>{
 const ConfirmarEliminacion =()=>{
     setDeleteTrigger(true);
     setIsConfirmationModalOpen(false);
+    setisSuccesDeleteOpenModal(true);
    
 }
 
@@ -60,7 +62,6 @@ const {data:delete_data,loading:delete_loading,error:delete_error} =useFetch('ap
 useEffect(() => {
   setDeleteTrigger(false)
 }, [delete_data,delete_loading,delete_error])
-
 
 
 
@@ -83,6 +84,7 @@ useEffect(() => {
 
 const closeSuccessModal = () => {
   setisSuccesOpenModal(false); // Resetear el estado al cerrar el modal
+  ActualizarPublicaciones(true);
 }
 
  return(
@@ -108,6 +110,7 @@ const closeSuccessModal = () => {
                         <ModificarPublicacion itemKey={itemKey} onClose={closeModal} onSuccess={showSucces} />
                  </ModificationModal>
                  <GenericExitoso isSuccess={isSuccesOpenModal} onClose={closeSuccessModal} Leyenda={"¡Producto Modificado Con Exito!"} />
+                 <GenericExitoso isSuccess={isSuccesOpenDeleteModal} onClose={closeSuccessModal} Leyenda={"¡Producto eliminado con exito!"} />
             
         </>
 

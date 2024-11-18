@@ -156,7 +156,6 @@ export const ModificarPublicacion = ({ itemKey, onClose ,onSuccess }) => {
         
     };
 
-    
 
     // Manejo del submit del formulario
     const handleSubmit = (event) => {
@@ -187,7 +186,6 @@ export const ModificarPublicacion = ({ itemKey, onClose ,onSuccess }) => {
 
 
     const { data, loading:loading_confirmar, error } = useFetch('api/modi_publicaciones.php', 'POST', FORMDATA, triggerfetch);
-    console.log(data);
 
     useEffect(() => {
         if (data ) {

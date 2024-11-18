@@ -11,8 +11,8 @@ export const UserAccount = () =>{
    const {autenticado}= useAuth();
    const {datauser} =  useAuth();
    const { openModal } = useLoginModal(); // Usar la función para abrir el modal
-    const isAdmin = localStorage.getItem('isAdmin');
-    const hash = localStorage.getItem('sessionId');
+    const isAdmin = sessionStorage.getItem('isAdmin');
+    const hash = sessionStorage.getItem('sessionId');
    
 
 

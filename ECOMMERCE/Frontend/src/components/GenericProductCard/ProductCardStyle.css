@@ -22,7 +22,6 @@ a{text-decoration: none;}
     gap: 16px;
     cursor: pointer;
 
-
    .image-container{
         width: 96%;
         height: 45%;
@@ -40,10 +39,15 @@ a{text-decoration: none;}
         
     }
 
-
-
    }
     
+   .Botonera{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+   }
 
     .tituloStyle {
         font-family: "Caveat";

@@ -1,0 +1,62 @@
+
+.metodos-pago-container{
+
+    box-shadow: 0 0 2px 0 ;
+    width: 100% ;
+    border-radius: 10px;
+    height: 200px ;
+    background-color: #F1F0EC  ;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    
+    .container-metodos-pago{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .Metodos-Pago{
+        display: flex;
+        flex-direction: row;  
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+        
+
+    }
+    .pago{
+        font-family: "Questrial";
+        font-size: 16px;
+        font-weight: 500;
+        display: flex;
+        align-items: start;
+    }
+
+    .total-compra{font-family: "Questrial";} 
+}
+
+.comprar-button{
+
+    height: 15%;
+    border-radius: 10px;
+    width: 150px;
+    font-family: "Questrial";
+    font-size: 15px;
+    border: none;
+    box-shadow: 0 0 3px 0;
+    cursor: pointer;
+    background-color: #DBEAE2;
+    font-weight: 550;
+    transition: 0.2s ease-in-out;
+}
+.comprar-button:hover{
+    background-color: #87AA96;
+    width: 160px;
+    color: white;
+    font-weight: 500;
+
+}

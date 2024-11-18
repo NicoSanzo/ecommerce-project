@@ -24,15 +24,13 @@ export const AuthProvider = ({ children }) => {
         if (sessionData && sessionData.session_id) {
             setAutenticado(true);
             setdatauser(sessionData); // Almacena la información del datauser
-            localStorage.setItem('autenticacion', autenticado); // guardo en el local storage para que cuando se recarge la pagina no te lleve al home
-            localStorage.setItem('isAdmin',sessionData.admin);
-            localStorage.setItem('sessionId',sessionData.hash);
+            sessionStorage.setItem('autenticacion', autenticado); // guardo en el local storage para que cuando se recarge la pagina no te lleve al home
+            sessionStorage.setItem('isAdmin',sessionData.admin);
+            sessionStorage.setItem('sessionId',sessionData.session_id);
         } else {
             setAutenticado(false);
             setdatauser(null);
-            localStorage.removeItem('autenticacion');
-            localStorage.removeItem('isAdmin');
-            localStorage.removeItem('sessionId');
+            sessionStorage.clear();
             setCheckSessionTrigger(true);
         }
     }, [sessionData]);
@@ -41,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     /*establece la autenticacion cuando se loguea y se verifican los datos ingresados en la pagina de logina(nota: en la pagina de login se realiza un pedido para verificar y establecer la session)*/ 
     const login = () => {
         setAutenticado(true);
-        localStorage.setItem('autenticacion', autenticado);
+        sessionStorage.setItem('autenticacion', autenticado);
     };
    
     const logout = async () => {
@@ -51,7 +49,7 @@ export const AuthProvider = ({ children }) => {
             });
             setAutenticado(false);
             setdatauser(null);
-            localStorage.removeItem('autenticado');
+            sessionStorage.clear();
             navigate('/home');      
             location.reload();
         } catch (error) {

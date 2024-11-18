@@ -15,6 +15,12 @@ const[triggerfetchPublicaciones,setTriggerFetchPublicaciones]=useState(false);
     }, [])
 
     const {data,loading,error}=useFetch("api/Publicaciones.php","POST",null,triggerfetchPublicaciones);
+
+    useEffect(() => {
+      if (data){
+      setTriggerFetchPublicaciones(false); 
+      }
+    }, [data])
     
       if (error) {
         return <div>Error al cargar las publicaciones.</div>;
@@ -36,6 +42,7 @@ const[triggerfetchPublicaciones,setTriggerFetchPublicaciones]=useState(false);
                  titulo={publis.titulo}
                  price={publis.precio }
                  stock={publis.stock}
+                 ActualizarPublicaciones={setTriggerFetchPublicaciones}
                />
              ))
            ) : (

@@ -5,7 +5,7 @@ import { useAddCarrito } from "../../../../../Context/addCarritoContext";
 export function MetodosDePago() {
 
    
-const {handleChangeOpcionesPago} =useAddCarrito()
+const {handleChangeOpcionesPago} = useAddCarrito()
 
     return (
         <>
@@ -23,13 +23,14 @@ const {handleChangeOpcionesPago} =useAddCarrito()
                         <h2 className="pago">Paga con transferencia bancaria (10% OFF)</h2>
                         
                     </div>
-                    <div className="precios-container"> 
+                    <div className="Metodos-Pago"> 
                         <input 
-                            type="radio" 
-                            name="metodo_pago"
-                            value="MP"
+                            type="radio"
+                            name="metodo_pago" 
+                            value="MP" 
                             onChange={handleChangeOpcionesPago}
                             />
+                        <h2 className="pago">Mercadopago</h2>
                     </div>
 
                 </div>

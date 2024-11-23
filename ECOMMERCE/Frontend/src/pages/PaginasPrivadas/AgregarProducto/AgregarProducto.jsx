@@ -212,7 +212,7 @@ export const AgregarProducto = () => {
         {<GenericExitoso isSuccess={isSuccess}  onClose={handleCloseModal} Leyenda={"¡Producto Agregado Con Exito!"}/>}
           
         <form onSubmit={handleSubmit} className="principal-container-agregar" ref={principal_container}>
-            <h2 className="titulo-principal">Modificar Publicación</h2>
+            <h2 className="titulo-principal">Agregar Publicacion</h2>
 
             <div className="div-titulo-publi">
                 <InputText

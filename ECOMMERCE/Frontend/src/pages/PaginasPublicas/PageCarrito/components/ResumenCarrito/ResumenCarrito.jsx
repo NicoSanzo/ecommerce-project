@@ -5,7 +5,7 @@ import { useResumenCarrito } from "./useResumenCarrito";
 
 export function ResumenCarrito() {
 
-    const {Envio,totalCompra,ContinuarCompra,arrayProductsCarrito,total}=useResumenCarrito();
+    const {Envio,totalCompra,ContinuarCompra,arrayProductsCarrito,total,MostrarDescuento,cantidadDescuento}=useResumenCarrito();
 
    
     return (
@@ -16,15 +16,25 @@ export function ResumenCarrito() {
                 <div className="container-father-precios">
                     <div className="precios-container"> 
                         <h2 className="resumen">Productos:</h2>
-                        <h2 className="resumen">$ {total.toFixed(2)}</h2>  
+                        <h2 className="resumen">$ {total.toFixed(2)}</h2>     
                     </div>
+                   
+                   
                     <div className="precios-container"> 
                         <h2 className="resumen">Envio:</h2>
                         <h2 className="resumen">$ {Envio.toFixed(2)}</h2>  
                     </div>
 
                 </div>
-                <div className="precios-container"> 
+                { MostrarDescuento===true && arrayProductsCarrito.length>0? 
+                    <div className="precios-container"> 
+                        <h2 className="descuento-transfer">10%OFF:</h2>
+                        <h2 className="descuento-transfer">$-{cantidadDescuento.toFixed(2)}</h2>     
+                    </div>: ""
+                }
+
+                <div className="precios-container-total"> 
+                    
                         <h2 className="total-compra">TOTAL:</h2>
                         <h2 className="total-compra">$ {totalCompra.toFixed(2)}</h2>  
                 </div>

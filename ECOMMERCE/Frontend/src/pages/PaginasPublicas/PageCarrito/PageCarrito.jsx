@@ -1,9 +1,12 @@
 import "./PageCarritoStyle.css";
 import { CarritoProductsContainer } from "./components/CarritoProductsContainer/CarritoProductsContainer";
+import { useAddCarrito } from "../../../Context/addCarritoContext";
 import { ResumenCarrito } from "./components/ResumenCarrito/ResumenCarrito";
 import { MetodosDePago } from "./components/MetodosDePago/MetodosDePago";
 
 export function PageCarrito() {
+
+    const {MostrarMetodosDepago} = useAddCarrito();
 
 
     return (
@@ -15,7 +18,11 @@ export function PageCarrito() {
            <div className="datos-de-compra">
 
            <ResumenCarrito/>
-           <MetodosDePago/>
+            { MostrarMetodosDepago===true  &&
+                
+                <MetodosDePago/>
+            }
+           
 
            </div>
           

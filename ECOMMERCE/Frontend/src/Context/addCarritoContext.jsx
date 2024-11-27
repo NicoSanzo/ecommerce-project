@@ -1,16 +1,23 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
+
 const AddCarritoContext = createContext();
 
 export const ContextCarritoProvider = ({ children }) => {
 
+
+   
     const[arrayProductsCarrito, SetproductosToCarrito] = useState([]);
     const [cantidaditemsCarrito,setCantidadItemsCarrito] =useState(0);
     const [MostrarDescuento,setMostrarDescuento]=useState(false);
     const [total,SetTotal] =useState(0);
+    const [subtotal,setSubtotal] =useState(0);
+    const [subtotalConDescuento,setsubTotalConDescuento] =useState(0);
     const [porcentajeDescuento,setPorcentajeDescuento]=useState(0);
     const [cantidadDescuento,setCantidadDescuento]= useState(0);
     const [MostrarMetodosDepago, setMostrarMetodosDePago]= useState(false);
+    const [Envio, setPrecioEnvio] = useState(7000);
+    
 
       /********************GUARDA EL CARRITO PARA QUE AL RECARGAR LA PAGINA NO SE BORRE ***********************/
 
@@ -52,39 +59,20 @@ export const ContextCarritoProvider = ({ children }) => {
         });
     };
 
-
+      
  /********************CALCULA EL SUBTOTAL DE LOS PRODUCTOS, ES UNA PROPIEDAD QUE CUENTA UN DETERMINADO CAMPO DEL ARRAY Y LO GUARDA EN UNA CONSTANTE ***********************/
     useEffect(() => {
       const subtotal = arrayProductsCarrito.reduce(
           (total, item) => total + item.data.data.price * item.stock,0);
-
-
-/********************GALCULA EL DESCUENTO AL ELEGIR TRANSFERENCIA BANCARIA ***********************/
+      
+/********************CALCULA EL DESCUENTO AL ELEGIR TRANSFERENCIA BANCARIA + ENVIO ***********************/
       const totalConDescuento = subtotal - (subtotal * porcentajeDescuento) / 100;
       const descuentoTotal= subtotal * porcentajeDescuento/ 100;
-      SetTotal(totalConDescuento);
       setCantidadDescuento(descuentoTotal);
-  }, [arrayProductsCarrito, porcentajeDescuento]);
-
-
-  /********************ESTABLECE EL DESCUENTO AL ELEGIR UN EVENTO DE LOS METODOS DE PAGO ***********************/
-  const handleChangeOpcionesPago = (event) => {
-        
-       if(event.target.value==="transfer")
-         {
-          setPorcentajeDescuento(10)
-          setMostrarDescuento(true);
-         }
-       else if (event.target.value==="MP"){
-        setMostrarDescuento(false); 
-        setPorcentajeDescuento(0);
-       } 
-       else if(arrayProductsCarrito.length===0)
-       {
-        setPorcentajeDescuento(0)
-        setMostrarDescuento(false);
-        }
-  }
+      setSubtotal(subtotal);
+      setsubTotalConDescuento(totalConDescuento)
+      SetTotal(totalConDescuento + Envio);
+  }, [arrayProductsCarrito, porcentajeDescuento,Envio]);
 
 
    
@@ -131,6 +119,7 @@ export const ContextCarritoProvider = ({ children }) => {
     const EliminarTodoElCarrito = () => {
         localStorage.removeItem('carrito');
         SetproductosToCarrito([]);   
+        
     }
 
     return (
@@ -145,11 +134,16 @@ export const ContextCarritoProvider = ({ children }) => {
                 EliminarTodoElCarrito,
                 AgregarStock,
                 RestarStock,
-                handleChangeOpcionesPago,
+                setMostrarDescuento,
                 MostrarDescuento,
                 cantidadDescuento,
                 MostrarMetodosDepago, 
-                setMostrarMetodosDePago
+                setMostrarMetodosDePago,
+                Envio,
+                setPorcentajeDescuento,
+                subtotal,
+                subtotalConDescuento,
+                porcentajeDescuento,
 
             }}>
             {children}

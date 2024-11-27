@@ -34,7 +34,7 @@ export const MiPerfil = () => {
     
     }, [data])
 
-    console.log(data)
+
 
         const AbrirModalUsuarioMod=()=>{
             set_Abrir_Mod_Data_User(true);

@@ -11,12 +11,9 @@ export const AuthProvider = ({ children }) => {
     const [checkSessionTrigger, setCheckSessionTrigger] = useState(false); // Para verificar la sesión
     const navigate = useNavigate();
     
-       /*Verifica la session en PHP*/
+    /*Verifica la session en PHP*/
     const { data: sessionData } = useFetch('/api/check_start_session.php', 'POST', null, checkSessionTrigger);
 
-   //console.log(datauser);
-   //console.log(autenticado);
-   //console.log(sessionData)
     
    /* Verifica que la session tenga datos y que exita un id de session*/
 
@@ -24,9 +21,10 @@ export const AuthProvider = ({ children }) => {
         if (sessionData && sessionData.session_id) {
             setAutenticado(true);
             setdatauser(sessionData); // Almacena la información del datauser
-            sessionStorage.setItem('autenticacion', autenticado); // guardo en el local storage para que cuando se recarge la pagina no te lleve al home
+            sessionStorage.setItem('autenticacion', autenticado); // guardo en el sessionStorage para que cuando se recarge la pagina no te lleve al home
             sessionStorage.setItem('isAdmin',sessionData.admin);
             sessionStorage.setItem('sessionId',sessionData.session_id);
+            sessionStorage.setItem('id_user',sessionData.id_user);
         } else {
             setAutenticado(false);
             setdatauser(null);

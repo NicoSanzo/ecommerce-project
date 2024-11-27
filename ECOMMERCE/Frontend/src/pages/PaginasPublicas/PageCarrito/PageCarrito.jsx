@@ -3,6 +3,8 @@ import { CarritoProductsContainer } from "./components/CarritoProductsContainer/
 import { useAddCarrito } from "../../../Context/addCarritoContext";
 import { ResumenCarrito } from "./components/ResumenCarrito/ResumenCarrito";
 import { MetodosDePago } from "./components/MetodosDePago/MetodosDePago";
+import { Facturacion } from "./components/Facturacion/Facturacion";
+import { Entrega } from "./components/Entrega/Entrega";
 
 export function PageCarrito() {
 
@@ -19,14 +21,18 @@ export function PageCarrito() {
 
            <ResumenCarrito/>
             { MostrarMetodosDepago===true  &&
-                
-                <MetodosDePago/>
+                <>
+                    <Facturacion/>
+                    <Entrega/>
+                    <MetodosDePago/>
+                    
+                    
+                </>
             }
            
 
            </div>
-          
-            
+               
         </div>
           
             

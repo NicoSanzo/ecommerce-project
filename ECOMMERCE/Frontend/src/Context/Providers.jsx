@@ -1,5 +1,5 @@
 import { LoginModalProvider } from './LoginPopContext';
-
+import { ContextvalidarAndComprar } from './validarComprar';
 import { ContextCarritoProvider } from './addCarritoContext';
 import { ContextProductProvider } from './productDetailContext';
 import { AuthProvider } from './authContext';
@@ -12,8 +12,10 @@ export const AppContextProviders = ({ children }) => (
       <SearchProvider>
         <ContextProductProvider>
           <ContextCarritoProvider>
-            {children}
-            </ContextCarritoProvider>
+            <ContextvalidarAndComprar>
+              {children}
+            </ContextvalidarAndComprar>
+          </ContextCarritoProvider>
         </ContextProductProvider>
       </SearchProvider>
     </LoginModalProvider>

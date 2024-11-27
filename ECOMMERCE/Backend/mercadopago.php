@@ -10,7 +10,8 @@
           $idempotency_key = uniqid();
 
           MercadoPagoConfig::setAccessToken("APP_USR-7111131958621539-112623-18e5a6e4c34a716eba1b837ed40af242-2118953311");
-        
+          //MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
+
           $client = new PreferenceClient();
           $request_options = new RequestOptions();
           $request_options->setCustomHeaders(["X-Idempotency-Key: $idempotency_key"]);

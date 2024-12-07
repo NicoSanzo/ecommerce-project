@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useAddCarrito } from "../../../../../Context/addCarritoContext";
 import { useLoginModal } from "../../../../../Context/LoginPopContext";
+import { useAuth } from "../../../../../Context/authContext";
 
 export function useResumenCarrito(OcultarButtonComprar) {
+  
   const {
     arrayProductsCarrito,
     total,
     MostrarDescuento,
     cantidadDescuento,
+    MostrarMetodosDepago,
     setMostrarMetodosDePago,
     subtotal,
-    Envio
+    Envio,
   } = useAddCarrito();
   
-
+  const { sessionData,isTokenValid } = useAuth();
   const { openModal } = useLoginModal();
+
 
   // Función para continuar con la compra,   Verifica si el usuario no está autenticado o si falta algún dato en sessionStorage, sino abre el login
   const ContinuarCompra = () => {
-    const isUserAuthenticated = sessionStorage.getItem('autenticacion');
-    const isUserAdmin = sessionStorage.getItem('isAdmin');
-    const hasSessionId = sessionStorage.getItem('sessionId');
 
-    if (!isUserAuthenticated || !isUserAdmin || !hasSessionId) {
+    if (!sessionData || sessionData.data.isAdmin==true ) {
       openModal();
-    } else if (arrayProductsCarrito.length !== 0) {
+    } else if (arrayProductsCarrito.length !== 0 &&  sessionData.data.isAdmin==false) {
       setMostrarMetodosDePago(true);
       OcultarButtonComprar.current.style.display = "none";
     }
@@ -36,6 +37,10 @@ export function useResumenCarrito(OcultarButtonComprar) {
     if (arrayProductsCarrito.length === 0) {
       OcultarButtonComprar.current.style.display = "block";
     }
+    if(MostrarMetodosDepago===true && arrayProductsCarrito.length > 0){
+      OcultarButtonComprar.current.style.display = "none"; 
+    }
+    
   }, [arrayProductsCarrito]);
 
   /******************* Calcula el total de la compra con envio *******************/
@@ -48,6 +53,7 @@ export function useResumenCarrito(OcultarButtonComprar) {
     ContinuarCompra,
     MostrarDescuento,
     cantidadDescuento,
-    subtotal
+    subtotal,
+    isTokenValid
   };
 }

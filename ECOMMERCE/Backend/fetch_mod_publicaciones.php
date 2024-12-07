@@ -1,6 +1,7 @@
 <?php
     require("./Checking.php");
     require("./Conexion.php");
+
     if(!isset($_POST['id'])){
         $response['error'] = "No se encuentran las variables necesarias para realizar el fetch de publicaciones.";
         echo json_encode($response);
@@ -43,7 +44,6 @@
     $object->peso = $fila['peso'];
     $object->marca_id = $fila['marca_id'];
     $object->categoria_id = $fila['categoria_id'];
-
 
 
     $query = "SELECT * FROM publicacion WHERE id = '$id_publicacion';";

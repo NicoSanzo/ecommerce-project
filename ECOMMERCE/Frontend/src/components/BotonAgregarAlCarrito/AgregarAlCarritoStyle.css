@@ -1,19 +1,14 @@
 
 .Container-Agrega-Carrito-Button{
     width: 60%;
-    height: 40px;
     position: relative;
     height: fit-content;
     display: flex;
-  
+
 }
 
 
-
 .AgregarAlCarrito{
-
-
-   
        box-shadow: 0 0 3px 0 black;
        border-radius: 40px;
        height: 40px;
@@ -28,10 +23,7 @@
        background-position: center;
        position: relative; 
        overflow: hidden;
-       transition: background-color 0.4s ease
-
-    
-     
+       transition: background-color 0.4s ease   
 }
 
 .Cantidad-Agregada{
@@ -42,8 +34,7 @@
         border: solid thin #87AA96;
         position: absolute;
         background-color: #DBEAE2 ;
-        text-align: center;
-        
+        text-align: center;     
         top:-5px;
         right: -5px;
         z-index: 6;

@@ -4,5 +4,7 @@ import "./ButtonVerStyle.css";
 export const ButtonVer = ()=>{
 
 return(
-    <button className="buttonVer">VER</button>
+    <div className="Container-ver-button">
+        <button className="button-Ver">VER</button>
+    </div>
 )}

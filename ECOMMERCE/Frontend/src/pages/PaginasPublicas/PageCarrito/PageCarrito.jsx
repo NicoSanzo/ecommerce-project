@@ -8,7 +8,7 @@ import { Entrega } from "./components/Entrega/Entrega";
 
 export function PageCarrito() {
 
-    const {MostrarMetodosDepago} = useAddCarrito();
+    const {MostrarMetodosDepago} = useAddCarrito();    
 
 
     return (
@@ -24,15 +24,10 @@ export function PageCarrito() {
                 <>
                     <Facturacion/>
                     <Entrega/>
-                    <MetodosDePago/>
-                    
-                    
+                    <MetodosDePago/>                        
                 </>
             }
-           
-
-           </div>
-               
+           </div>            
         </div>
           
             

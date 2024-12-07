@@ -15,7 +15,6 @@ export const AdminMenu = ({user}) =>{    //recibe como argumento una funcion de 
         logout();
     }
 
-
     return (
         <>      
             <div className="user-container" >         

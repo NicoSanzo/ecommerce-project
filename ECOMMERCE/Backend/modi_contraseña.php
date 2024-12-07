@@ -2,6 +2,8 @@
     require("./Checking.php");
     require("./Conexion.php");
 
+    $dataSession= autenticarUsuario();
+
     if(!isset($_POST['contraseña_actual']) && !isset($_POST['contraseña_nueva'])){
         $response['error '] = "No llegaron las variables para hacer la modifiación de la contraseña.";
         echo json_encode($response);
@@ -10,7 +12,7 @@
 
     $contraseña_actual = hash("sha512", $_POST['contraseña_actual']); 
     $contraseña_nueva = hash("sha512", $_POST['contraseña_nueva']);
-    $id_user = $_SESSION['id_user'];
+    $id_user = $dataSession['id_user'];
 
     $query = "SELECT * FROM usuario WHERE contrasena = '$contraseña_actual' AND id = '$id_user';";
     $result = mysqli_query($conn, $query);

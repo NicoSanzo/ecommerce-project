@@ -2,12 +2,14 @@
     require("./Checking.php");
     require("./Conexion.php");
     
+
+     $dataSession= autenticarUsuario();   // es una funcion que se encuentra en checkign.php
+     $id_user = $dataSession['id_user'];
+     $admin = $dataSession['isAdmin'];
+
     $response = [];
     $response['data'] = [];
-
-     $id_user = $_SESSION['id_user'];
-    $admin = $_SESSION['admin'];
-    
+ 
 
      $query = "SELECT * FROM usuario WHERE id = '$id_user';";
      $result = mysqli_query($conn, $query);
@@ -44,9 +46,7 @@
         $object->dom_fis_dom_fis_id = $fila['dom_fis_dom_fis_id'];
 
         mysqli_free_result($result);
-
-
-   
+  
 
         $query = "SELECT dom_fis_dom_fis_id FROM cliente WHERE id = '$id_user'";
         $result = mysqli_query($conn, $query);

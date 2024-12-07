@@ -2,6 +2,8 @@
     require("./Checking.php");
     require("./Conexion.php");
 
+    $dataSession= autenticarUsuario(); // es una funcion del Checking sesion, pone las variables de session que llegan del servidor y se las pasa a id_user (en este caso le pasa el id de usuario)
+
     if(!verificarVariables()){
         $response['error'] = "No llegaron las variables necesarias para la modificación del usuario.";
         echo json_encode($reponse);
@@ -12,8 +14,7 @@
     $localidad = $_POST['localidad_fis'];
     $codigo_postal = $_POST['codigo_postal_fis'];
     $provincia = $_POST['provincia_fis'];
-
-    $id_user = $_SESSION['id_user'];
+    $id_user = $dataSession['id_user'];
 
 
     $query = "SELECT * FROM cliente WHERE id = '$id_user';";

@@ -1,19 +1,56 @@
 <?php
+require_once '../../vendor/autoload.php';  // Asegúrate de que la librería firebase/php-jwt esté cargada
 
-session_start();   
-if (isset($_SESSION['usuario'])) {
-    $User=[];
-    $User['usuario']=$_SESSION['usuario'];
-    $User['apellido']= $_SESSION['apellido'];
-    $User['mail']= $_SESSION['mail'];
-    $User['nombre']= $_SESSION['nombre'];
-    $User['session_id']= $_SESSION['hash'];
-    $User['id_user']= $_SESSION['id_user'];
-    $User['admin']= $_SESSION['admin'];
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
-    echo json_encode($User);
+$secret_key = "nico"; // es la misma clave que se utiliza en Userlogin.php para verificar el token
+
+function verificarJWT($jwt) {
+    global $secret_key;
+
+    if (!$jwt) {
+        return false;
+    }
+
+    try {
+        $decoded = JWT::decode($jwt, new Key($secret_key, 'HS256'));
+        return (array) $decoded;  // Devuelve el payload decodificado
+    } catch (\Firebase\JWT\ExpiredException $e) {
+        return "Token expirado"; // Caso de expiración
+    } catch (Exception $e) {
+        return false;
+    }
+}
+
+// Verificar el JWT desde el encabezado
+$headers = apache_request_headers();  // almacena los headers aca
+
+if (isset($headers['authorization'])) {    // desde el front se envia un header con la codificacion del token
+    
+
+    $jwt = str_replace("Bearer ", "", $headers['authorization']);    
+    $userData = verificarJWT($jwt);  // esta funcion decodifica el toquen y establece los datos de session en userData para enviarlos en la peticion
+    $response;
+    
+    if ($userData === "Token expirado") {
+        $response['error'] = "Token expirado";
+        echo json_encode($response);
+        exit;
+    }
+    
+    if ($userData) {
+        // El JWT es válido, puedes usar los datos del usuario
+        $response['data']=$userData;
+        echo json_encode($response);
+        
+    } else {
+        // El token es inválido  
+        $response['error']= "Token inválido";
+        echo json_encode($response);
+    }
 } else {
-    $response['error']='No autenticado';
+    $response['error']= "Token no proporcionado";
     echo json_encode($response);
 }
 ?>

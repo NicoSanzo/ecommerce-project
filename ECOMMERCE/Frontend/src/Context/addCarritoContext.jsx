@@ -1,13 +1,14 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 
+
 const AddCarritoContext = createContext();
 
 export const ContextCarritoProvider = ({ children }) => {
 
-
+    
    
-    const[arrayProductsCarrito, SetproductosToCarrito] = useState([]);
+    const [arrayProductsCarrito, SetproductosToCarrito] = useState([]);
     const [cantidaditemsCarrito,setCantidadItemsCarrito] =useState(0);
     const [MostrarDescuento,setMostrarDescuento]=useState(false);
     const [total,SetTotal] =useState(0);
@@ -16,8 +17,9 @@ export const ContextCarritoProvider = ({ children }) => {
     const [porcentajeDescuento,setPorcentajeDescuento]=useState(0);
     const [cantidadDescuento,setCantidadDescuento]= useState(0);
     const [MostrarMetodosDepago, setMostrarMetodosDePago]= useState(false);
-    const [Envio, setPrecioEnvio] = useState(7000);
-    
+    const [Envio, setPrecioEnvio] = useState(null);
+
+ 
 
       /********************GUARDA EL CARRITO PARA QUE AL RECARGAR LA PAGINA NO SE BORRE ***********************/
 
@@ -115,12 +117,14 @@ export const ContextCarritoProvider = ({ children }) => {
     };
 
 
+
+
 /******************** FUNCION PARA VACIAR TODO EL CARRITO  ***********************/
     const EliminarTodoElCarrito = () => {
         localStorage.removeItem('carrito');
         SetproductosToCarrito([]);   
-        
     }
+
 
     return (
         <AddCarritoContext.Provider 
@@ -140,10 +144,12 @@ export const ContextCarritoProvider = ({ children }) => {
                 MostrarMetodosDepago, 
                 setMostrarMetodosDePago,
                 Envio,
+                setPrecioEnvio,
                 setPorcentajeDescuento,
                 subtotal,
                 subtotalConDescuento,
                 porcentajeDescuento,
+                
 
             }}>
             {children}

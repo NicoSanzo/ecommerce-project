@@ -45,7 +45,7 @@ export const ModalDatoUsuario = ({isOpen ,onClose ,data ,ActualizarPagina}) => {
       const handleSubmit = (event) => {
         event.preventDefault();
         const validationErrors = validate();
-        console.log(validationErrors)
+        //console.log(validationErrors)
         if (Object.keys(validationErrors).length === 0) {
 
             const formData = new FormData();
@@ -67,7 +67,7 @@ export const ModalDatoUsuario = ({isOpen ,onClose ,data ,ActualizarPagina}) => {
 
 
       useEffect(() => {
-        console.log(modi_data); // Añade esto para verificar la respuesta.
+        //console.log(modi_data); // Añade esto para verificar la respuesta.
         if(modi_data && modi_data.data) {
             
             setIsSubmittedSuccessfully(true);

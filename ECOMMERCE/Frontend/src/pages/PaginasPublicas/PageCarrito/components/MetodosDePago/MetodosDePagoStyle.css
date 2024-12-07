@@ -60,6 +60,32 @@
 
 }
 
+#wallet_container /*Personalizacion minima del boton de MP*/
+{
+    #walletBrick_container{   
+        button
+        {     
+           border: solid 1px  #87AA96  ;
+              
+           .svelte-h6o0kp{     
+             box-shadow: none;
+             display: flex;
+             justify-content: center;          
+           }
+          
+           .text-3x3I0b ,.loading-text{
+             margin: 6px;
+             box-shadow: 0 0 1px black;
+             background-color:#DBEAE2 ;
+           }  
+        }   
+
+        .svelte-1wbwr8x{
+            text-wrap: nowrap;
+        }
+    }
+}
+
 
 .pagar-transfer-button
 {

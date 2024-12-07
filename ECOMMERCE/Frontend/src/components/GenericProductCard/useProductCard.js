@@ -11,8 +11,6 @@ export const useProductCard = (itemKey) => {
   const [triggerFetch, setTriggerFetch] = useState(false);
   const [modalAbierto, setModal] = useState(false);
 
- 
-
 
   const navigate = useNavigate();
 

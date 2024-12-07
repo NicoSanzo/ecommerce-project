@@ -1,0 +1,262 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+.principal-page{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+}
+.principal-detalle-compras-container{
+
+height: fit-content ;
+width: 60%;
+border: solid;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap-reverse;
+padding: 1%;
+gap: 1%;
+font-family: "Quicksand", sans-serif;
+
+p{
+    strong{
+        font-weight: 600;
+    }
+    margin: 5px;
+    font-weight: 500;
+    
+}
+
+.informacion-compra{
+
+    border: solid thin;
+    width: 55%;
+    min-width: 45%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+
+    .products-container , .Estado-container,.factura-container,.contacto-container
+    {
+
+        box-shadow: 0 0 2px ;
+        border-radius: 5px;
+        background-color: #fdfdfd;
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+        gap: 6px;
+
+        
+
+
+        .compra-product-card,.estado-card,.factura-card,.contacto-card
+        {   
+            box-shadow: 0 0 3px 0 #cccccc;
+            width: 98%;
+            display: flex;   
+            align-items: center;
+            border-radius: 5px; 
+            margin: 2px;
+            padding: 1px;
+            background-color: white;
+            margin: auto;
+        
+
+            .image-container{
+                width:70px;
+                height: 70px; 
+                max-height: 300px;
+                border-radius: 15px;
+                box-shadow: 0 0 3px #cccccc;
+                border-radius: 10px;
+                position: relative;
+                display: flex;
+                padding: 5px;
+                margin: 8px;
+            
+                .product-image {
+                    width:100%;
+                    height: 100%; 
+                    object-fit: contain;    
+                }
+            }
+
+            .product-description{
+  
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                justify-content: center;
+                padding: 5px;
+
+                .estado-entrega{
+                    font-size: 13px; 
+                    display: flex;
+                    align-items: center;
+                    padding: 5px;
+                    border-radius: 5px;
+                    color:rgba(0, 0, 0, 0.43) ;
+
+                }
+
+            .titulo-publicacion , .stock-producto{
+                
+                height: fit-content;
+                font-size: 16px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                padding: 5px;   
+            }
+
+                .stock-producto{
+                    align-items:flex-start;
+                    flex-direction: column;
+                    height: fit-content;
+                    padding-top: 0px;
+                    font-size: 13px;
+                }      
+            }
+        }
+
+        .estado-card ,.factura-card{
+            padding: 5px;
+           
+            .data-factura{
+                
+                align-items: center;
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                gap: 45px;
+                
+               .img-container{
+                    border-radius: 50%;
+                    box-shadow: 0 0 3px;
+                    width: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 50px;
+                    margin: 5px;
+                    img{
+                        width: 35px;
+                        height: 45px;
+                        object-position: center;
+                        object-fit:contain;       
+                    }
+                } 
+                
+                    .button-descargar, .ver-factura{
+                        box-shadow: 0 0 2px black;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        width: fit-content;
+                        display: flex;
+                        height: fit-content;
+                        position: absolute;
+                        right: 0;
+                        margin-right: 10px;
+                        img{
+                            object-fit: contain;
+                            
+                        width: 35px;
+                        height: 35px;
+                        }
+                }        
+            }
+        }
+        .contacto-card
+        {
+            padding: 15px;
+            display: flex;
+            justify-content:center;
+            gap: 50px;
+           
+        }
+    }
+}
+
+
+.contacto-wpp,.contacto-instagram,.contacto-facebook{
+    width: 150px;    
+    display: flex;
+    gap: 5px;
+    height: 32px;
+    justify-content: center; 
+    align-items: center;   
+    text-decoration: none;   
+    border-radius: 5px;
+    padding: 2px;
+    color: black;
+
+    img{
+        width: 25px;
+        object-fit: contain;
+        height: 25px;
+    }
+    h2{
+        width: fit-content;
+        font-family: "Quicksand", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: center;
+    }      
+}
+.contacto-wpp{
+    box-shadow: 1px 1px 2px 1px #87AA96 ;
+}
+
+.contacto-instagram{
+    box-shadow: 1px 1px 2px 1px #c08cc3
+}
+
+.contacto-facebook{
+    box-shadow: 1px 1px 2px 1px #131ace
+}
+
+.contacto-wpp:hover{
+
+    background-color: #DBEAE2;
+    color: white;
+}   
+.contacto-instagram:hover{
+    background-color: #f0d4f1;
+    color: white;
+}
+
+.contacto-facebook:hover{
+    background-color: #c5c7f8;
+    color: white;
+}
+
+.estado-entrega{
+    font-size: 16px;
+    width: 100%;
+}
+
+
+
+}
+
+@media (max-width: 1000px){
+
+    .principal-detalle-compras-container{
+        width: 100%;
+        .informacion-compra{
+            width: 100%;
+        }
+        .detalle-compra{
+            width: 100%;
+        }
+
+
+    }
+
+
+
+}

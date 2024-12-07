@@ -8,18 +8,13 @@ import { ClientMenu } from "./Components/ClientUserMenu/ClientMenu";
 
 export const UserAccount = () =>{
 
-   const {autenticado}= useAuth();
-   const {datauser} =  useAuth();
+    const{ sessionData,autenticado }=useAuth();
    const { openModal } = useLoginModal(); // Usar la función para abrir el modal
-    const isAdmin = sessionStorage.getItem('isAdmin');
-    const hash = sessionStorage.getItem('sessionId');
-   
-
-
+    
 
     return(
         <>
-            {!autenticado &&
+            {autenticado==false &&
             <div  className="userLogin" onClick={openModal}>
                  <div className="container-login" >         
                     <img src={IconUser} alt="Icono usuario" /> 
@@ -27,14 +22,14 @@ export const UserAccount = () =>{
                  </div>
             </div>
             }
-            {autenticado && 
+            {sessionData &&  autenticado==true &&
             <div  className="userLogin" >
                 
                  <div className="container-login" >  
-                 {hash &&  isAdmin=="true" &&  <AdminMenu user={datauser.usuario}/>}
-                 {hash && isAdmin=="false" && <ClientMenu user={datauser.nombre}/>}
                     
-
+                 {  sessionData.data.isAdmin===true &&  <AdminMenu user={sessionData.data.username}/>}
+                 {  sessionData.data.isAdmin===false && <ClientMenu user={sessionData.data.nombre}/>}
+                    
                  </div>
             </div>
             }

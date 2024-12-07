@@ -1,16 +1,19 @@
 <?php
     require("./Checking.php");
 
+    $dataSession= autenticarUsuario();   // es una funcion que se encuentra en checkign.php //toma los datos de usuario direco de la sesion
+    $userid = $dataSession['id_user'];
+
+   
+
     if(!verificarVariables()){
         $response['error'] = "No se obtuvo la información necesaria para poder realizar la operación.";
         echo json_encode($response);
         exit();
     }
-   
 
     require("./Conexion.php");
-    $userid = $_POST['userid'];
-
+ 
     $query = "
         SELECT d.* FROM cliente c
         JOIN dom_fis d ON c.dom_fis_dom_fis_id = d.dom_fis_id
@@ -25,11 +28,7 @@
     }
 
     $fila = mysqli_fetch_assoc($result);
-
-   
-
-
-
+    
     if($fila['direccion'] == null || $fila['direccion'] == ""){
         $response['incompleto'] = true;
         echo json_encode($response);
@@ -38,23 +37,24 @@
         $response['incompleto'] = false;
     }
 
-/*
-    $publicaciones = "llego";
-    echo json_encode($publicaciones);
-    exit();*/
+
+   
 
     $total = $_POST['subtotalConDescuento'];
     $monto_envio = $_POST['Envio'];
-    $fecha = date('Y-m-d');
+    $fecha = new DateTime();
+    $fecha->modify('-3 hours');
+    $fecha = $fecha->format('Y-m-d H:i:s');
     $forma_envio = $_POST['tipoEntrega'];
     $metodo_pago = $_POST['metodo_pago'];
-    $estado = "Pendiente de pago.";
+    $estado_pago = "Pendiente de pago";
+    $estado_compra = "Pendiente de entrega";
     $descuento = $_POST['porcentajeDescuento'];
     $publicaciones= json_decode($_POST['publisEnviadas']);
     
     //CARGA DE LA OPERACION
 
-    $query = "INSERT INTO operacion VALUES (NULL, '$total', '$monto_envio', '$userid', '$fecha', NULL, '$forma_envio', '$metodo_pago', '$estado', NULL)";
+    $query = "INSERT INTO operacion VALUES (NULL, '$total', '$monto_envio', '$userid', '$fecha', NULL, '$forma_envio', '$metodo_pago', 'NULL', '$estado_pago', '$estado_compra', NULL, NULL)";
     $result = mysqli_query($conn, $query);
 
     if(!$result){
@@ -63,18 +63,10 @@
         exit();
     }
 
-   
-
     $id_siguiente_operacion = mysqli_insert_id($conn);
-
-
-   
-
 
     //CARGA DET_OPER DE TODAS LA PUBLICACIONES QUE SE COMPRARON
 
-
- 
     $query = "INSERT INTO det_oper VALUES";
     $first_enter = true;
     foreach($publicaciones as $publicacion){
@@ -86,9 +78,6 @@
             $query = $query . ", ('$publicacion->cantidad','$publicacion->precio','$descuento','$id_siguiente_operacion','$publicacion->id')";
         }
     }
-
-  
-
 
     $query = $query . ";";
 
@@ -145,7 +134,7 @@
 
     function verificarVariables(){
         if(!isset($_POST['publisEnviadas']) && !isset($_POST['subtotalConDescuento']) && !isset($_POST['tipoEntrega']) && 
-        !isset($_POST['porcentajeDescuento']) && !isset($_POST['Envio']) && !isset($_POST['userid']) && !isset($_POST['metodo_pago'])){
+        !isset($_POST['porcentajeDescuento']) && !isset($_POST['Envio'])  && !isset($_POST['metodo_pago'])){
             return false;
         }
         return true;

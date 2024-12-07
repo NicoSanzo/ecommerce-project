@@ -8,11 +8,14 @@ export function GenericExitoso({ isSuccess, onClose, Leyenda }) {
   
   useEffect(() => {
     if (isSuccess==true) {
-      setVisible(true);
+      setTimeout(() => {
+        setVisible(true);
+      }, 200);
     }
   }, [isSuccess]);
 
   const handleClose = () => {
+    
     setVisible(false);
     onClose(); 
   };

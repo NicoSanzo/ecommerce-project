@@ -1,25 +1,30 @@
 import "./MetodosDePagoStyle.css";
 
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
-initMercadoPago('APP_USR-1ff4363c-60dc-43b8-badf-525b10c8db2e');
+initMercadoPago('APP_USR-33489a3f-ad63-4050-817b-cd8f80bc6573');
 
 import { UseMetodosDePago } from "./useMetodosDePago";
 import {Link} from "react-router-dom"
 import { CustomCheckbox } from "../../../../../components/GenericCheckbox/CheckBox";
-
-
-
+import { CompraExitosa } from "../../../../PaginasPrivadas/CompraExitosa/CompraExitosa";
 
 export function MetodosDePago() {
 
 
-
-const {handleChangeOpcionesPago,setTerminosCondiciones,handleRealizarCompraTransfer, isSubmitted,errors,metodo_pago,handleFinalizarCompra,validacionExitosa,data_MP}= UseMetodosDePago();
-
-console.log(data_MP)
-
+const {handleChangeOpcionesPago,
+       setTerminosCondiciones,
+       handleRealizarCompraTransfer, 
+       isSubmitted,
+       errors,
+       metodo_pago,
+       handleFinalizarCompra,
+       validacionExitosa,
+       IDMercadopago,
+       isTokenValid,
+       abrirCompraExitosa}= UseMetodosDePago();
 
 const style = isSubmitted && errors && (errors.metodo_pago || errors.terminos) ? { border: "1px solid red" } : {};
+
 
     return (
         <>
@@ -53,7 +58,6 @@ const style = isSubmitted && errors && (errors.metodo_pago || errors.terminos) ?
                     
                 </div>
                 
-
                 <div className="checkbox">
                     <CustomCheckbox 
                         label="He leído y acepto los" 
@@ -66,7 +70,7 @@ const style = isSubmitted && errors && (errors.metodo_pago || errors.terminos) ?
                             <span style={{"color":"red"}}>  {errors.terminos} </span>
                     }
 
-                {validacionExitosa==true && metodo_pago==="Transferencia"?
+                {validacionExitosa==true && metodo_pago==="Transferencia" && isTokenValid?
                     <div id="wallet_container">
                         <button 
                              className="pagar-transfer-button"     
@@ -75,27 +79,25 @@ const style = isSubmitted && errors && (errors.metodo_pago || errors.terminos) ?
                         Pagar con Transferencia
                         </button> 
                     </div>:
-                    validacionExitosa==true && metodo_pago==="Mercadopago" && data_MP ? 
+                    validacionExitosa==true && metodo_pago==="Mercadopago" && IDMercadopago ? 
                     <div id="wallet_container">
                         <Wallet 
                             initialization= {{ 
-                                            preferenceId: data_MP,
-                                            redirectMode: 'blank' }} 
+                                            preferenceId: IDMercadopago,
+                                            redirectMode: 'modal' }} 
                     
                              customization={{ texts:{ 
-                                                    valueProp: 'security_details'
+                                                    valueProp: 'security_details',
+                                                    action:'pay'
                                                     }, 
                                              visual: {
-                                                        buttonBackground: 'black',
-                                                        borderRadius: '6px',
-                                                        buttonHeight: '48px'
+                                                        buttonBackground: 'white',
+                                                        valuePropColor:"grey",
+                                                        verticalPadding:'8px',                                 
                                                      },
                                                 }}                      
-                            
                         />
-
                     </div>  : 
-                    
                     <button 
                          className="terminar-comprar-button"     
                           onClick={handleFinalizarCompra}  
@@ -103,9 +105,9 @@ const style = isSubmitted && errors && (errors.metodo_pago || errors.terminos) ?
                     Finalizar compra
                     </button> }    
                                
-                    
+                    {abrirCompraExitosa===true && <CompraExitosa/>}
             </div>
-            
+ 
         </>
     )
 }

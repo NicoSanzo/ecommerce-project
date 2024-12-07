@@ -15,12 +15,17 @@ export const useFetch = (url, method = 'POST', body = null, triggerFetch = false
                     const options = {
                         method,
                         body: body instanceof FormData ? body : new URLSearchParams(body).toString(),
+                        credentials: "include",
+                        headers: {'authorization': 'Bearer ' + sessionStorage.getItem('token')}
+                        
+                        
                     };
 
                     // Solo agrega el encabezado 'Content-Type' si el body no es FormData
                     if (!(body instanceof FormData)) {
                         options.headers = {
                             'Content-Type': 'application/x-www-form-urlencoded',
+                            'authorization': 'Bearer ' + sessionStorage.getItem('token')
                         };
                     }
 
@@ -41,6 +46,7 @@ export const useFetch = (url, method = 'POST', body = null, triggerFetch = false
         }
     }, [triggerFetch]);
 
+    
     return { data, loading, error };
 };
 

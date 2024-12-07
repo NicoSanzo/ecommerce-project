@@ -1,7 +1,15 @@
 <?php
 require("./Conexion.php");
+require_once '../../vendor/autoload.php'; 
 
-session_start();
+use \Firebase\JWT\JWT;
+
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.cookie_samesite', 'Strict');
+
+
+$secret_key = "nico";  //Clave para establecer en el JWT, se codifica y se asigan al token 
 
 $response = [];
 
@@ -15,37 +23,46 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     // Verificar si el usuario existe
     if ($result && mysqli_num_rows($result) > 0) {
-        $usuario = mysqli_fetch_assoc($result);   
+        $usuario = mysqli_fetch_assoc($result);
         $password = hash("sha512", $password);
+        
         // Comparar la contraseña hasheada
         if ($password === $usuario['contrasena']) {
-            $_SESSION['usuario'] = $usuario['username']; // Almacena los datos de usuario de la session
-            $_SESSION['apellido']= $usuario['apellido'];
-            $_SESSION['mail']= $usuario['mail'];
-            $_SESSION['nombre']= $usuario['nombre'];
-            $_SESSION['id_user']= $usuario['id'];
-            $_SESSION['hash'] = session_id();
-            
-            mysqli_free_result($result);
-            $id_usuario = $usuario['id'];
-            $query = "";
 
-            $query = "SELECT * FROM administrador WHERE id = '$id_usuario';";
-            $result = mysqli_query($conn, $query);
-            if(mysqli_num_rows($result) != 1){
-                $_SESSION['admin'] = false;
-            }
-            else{
-                $_SESSION['admin'] = true;
-            }
+             // Verificar si el usuario es administrador
+             $query = "SELECT * FROM administrador WHERE id = '" . $usuario['id'] . "';";
+             $result_admin = mysqli_query($conn, $query);
+             if (mysqli_num_rows($result_admin) != 1) {
+                 $admin = false;
+             } else {
+                 $admin = true;
+             }
 
+            // Definir el payload del JWT
+            $payload = array(
+                "iss" => "localhost",  // Emisor del token
+                "iat" => time(),       // Fecha de emisión
+                "exp" => time() + 5000, // Expiración del token (1 hora)
+                "id_user" => $usuario['id'],
+                "username" => $usuario['username'],
+                "nombre" => $usuario['nombre'],
+                "apellido" => $usuario['apellido'],
+                "mail" => $usuario['mail'],
+                "isAdmin"=> $admin,
+            );
+
+             // Generar el token JWT
+             $jwt = JWT::encode($payload, $secret_key,'HS256');
+
+            // Manda el token generado y el estado
             $response['status'] = "success";
+            $response['token'] = $jwt;
             
         } else {
-            $response['error'] = "Usuario o mail incorrecto"; 
+            $response['error'] = "Usuario o mail incorrecto";
         }
     } else {
-        $response['error'] = "Usuario o mail incorrecto"; 
+        $response['error'] = "Usuario o mail incorrecto";
     }
 
     // Devolver la respuesta como JSON

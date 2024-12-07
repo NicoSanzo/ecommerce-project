@@ -2,6 +2,8 @@
     require("./Checking.php");
     require("./Conexion.php");
 
+    $dataSession= autenticarUsuario();
+
     if(!verificarVariables()){
         $response['error'] = "No llegaron las variables necesarias para la modificación del usuario.";
         echo json_encode($reponse);
@@ -12,7 +14,7 @@
     $localidad = $_POST['localidad_env'];
     $codigo_postal = $_POST['codigo_postal_env'];
     $provincia = $_POST['provincia_env'];
-    $id_user = $_SESSION['id_user'];
+    $id_user = $dataSession['id_user'];
 
 
     $query = "UPDATE dom_env SET direccion = '$direccion', localidad = '$localidad', codigo_postal = '$codigo_postal', provincia = '$provincia' WHERE cliente_id = '$id_user'";

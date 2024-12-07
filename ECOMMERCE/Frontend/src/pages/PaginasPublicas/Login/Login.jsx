@@ -29,15 +29,17 @@ export const Login = ({ onClose, Registrate }) => {
     };
 
     const { data, loading, error } = useFetch('/api/UserLogin.php', 'POST', { username, password }, enviar);
+
     
     useEffect(() => {
+        
         if (data) {
             if (data.error) {
                 setError(data.error);      
-            } else if (data.status === "success") {
-                login(data.status);
-                location.reload(); //recarga la pagina para que se se establezcan los datos del servidor
-                onClose();        
+            } else if (data.status === "success" ) {
+                sessionStorage.setItem('token', data.token);
+                login();
+                onClose();    //cierra el modal    
            }
         }
         if (error) {
@@ -51,11 +53,8 @@ export const Login = ({ onClose, Registrate }) => {
 
 
     const efectRegistro =()=>{
-
         Registrate();
-
     }
-
 
 
     return (

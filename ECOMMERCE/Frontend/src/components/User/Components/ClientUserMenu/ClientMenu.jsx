@@ -26,8 +26,13 @@ export const ClientMenu = ({user}) =>{    //recibe como argumento una funcion de
                         <img className="downarrow" src={downArrow}></img>
                     </div>
                             <ul className="Desplegable">
-                                <li>Compras</li>
-                                <li> <Link to="/MiPerfil"> Mi perfil </Link></li>          
+                                <li> 
+                                    <Link to="/compras">Compras</Link>
+                                     
+                                </li>
+                                <li> 
+                                    <Link to="/MiPerfil"> Mi perfil </Link>
+                                </li>          
                                 <li onClick={CerrarSession}>Salir</li>           
                             </ul>
                         </div>                   

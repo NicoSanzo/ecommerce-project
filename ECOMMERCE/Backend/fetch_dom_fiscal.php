@@ -1,13 +1,11 @@
 <?php
+
     require("./Checking.php");
+    $dataSession= autenticarUsuario();   // es una funcion que se encuentra en checkign.php //toma los datos de usuario direco de la sesion
 
-    if(!isset($_POST['userid'])){
-        $response['error'] = "No llegó el id para buscar el domicilio fiscal.";
-        echo json_encode($response);
-        exit();
-    }
+    $userid = $dataSession['id_user'];
 
-    $userid = $_POST['userid'];
+    
     require("./Conexion.php");
 
     $query = "

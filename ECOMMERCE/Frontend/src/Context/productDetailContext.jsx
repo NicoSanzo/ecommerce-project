@@ -7,6 +7,7 @@ const productDetailContext = createContext();
 export const ContextProductProvider = ({ children }) => {
 
 const [dataProduct, setDataProducto] = useState(null);
+
     
     return (
         <productDetailContext.Provider 

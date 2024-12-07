@@ -12,8 +12,9 @@ import { GenericExitoso } from "../../../components/GenericExitoso/GenericExitos
 
 
 export const AgregarProducto = () => {
-
-
+   
+    
+ 
     const [formValues, setFormValues] = useState({
         titulo: "",
         precio: "",

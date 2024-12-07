@@ -4,6 +4,8 @@ import { ContextCarritoProvider } from './addCarritoContext';
 import { ContextProductProvider } from './productDetailContext';
 import { AuthProvider } from './authContext';
 import { SearchProvider } from './searchContext';
+import { ContextCompraProvider } from './compraDetailContext';
+
 
 
 export const AppContextProviders = ({ children }) => (
@@ -13,7 +15,9 @@ export const AppContextProviders = ({ children }) => (
         <ContextProductProvider>
           <ContextCarritoProvider>
             <ContextvalidarAndComprar>
+              <ContextCompraProvider>
               {children}
+              </ContextCompraProvider>
             </ContextvalidarAndComprar>
           </ContextCarritoProvider>
         </ContextProductProvider>

@@ -20,6 +20,7 @@ export const ProductoDetail = ()=>{
     
     const imagenes = [{ id: storedDataProduct.data[0].publicacion_id, src: storedDataProduct.data[0].imagen , description:"foto" }]
 
+
     return(
 
         <div className="general-product-container">

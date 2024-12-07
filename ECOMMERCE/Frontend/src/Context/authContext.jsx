@@ -1,63 +1,97 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useFetch } from '../hooks/PedidoFetchGenerico';
 import { useNavigate } from 'react-router-dom';
+import { useFetch } from '../hooks/PedidoFetchGenerico';
+import {jwtDecode } from 'jwt-decode';
+
+
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
  
+    
     const [autenticado, setAutenticado] = useState(false);
-    const [datauser, setdatauser] = useState(null);
-    const [checkSessionTrigger, setCheckSessionTrigger] = useState(false); // Para verificar la sesión
+    const [checkSessionTrigger, setCheckSessionTrigger] = useState(false); // Activa la peticion del servidor para verificar la sesión
+    const [isTokenValid, setIsTokenValid] = useState(true); // Se guarda la verificacion del token de session por si expira para poder actualizar los estados en el front
     const navigate = useNavigate();
     
     /*Verifica la session en PHP*/
-    const { data: sessionData } = useFetch('/api/check_start_session.php', 'POST', null, checkSessionTrigger);
+    const { data: sessionData ,error} = useFetch('./api/check_start_session.php', 'POST',  null , checkSessionTrigger);
 
-    
-   /* Verifica que la session tenga datos y que exita un id de session*/
+    const token=sessionStorage.getItem('token');
 
-    useEffect(() => {
-        if (sessionData && sessionData.session_id) {
-            setAutenticado(true);
-            setdatauser(sessionData); // Almacena la información del datauser
-            sessionStorage.setItem('autenticacion', autenticado); // guardo en el sessionStorage para que cuando se recarge la pagina no te lleve al home
-            sessionStorage.setItem('isAdmin',sessionData.admin);
-            sessionStorage.setItem('sessionId',sessionData.session_id);
-            sessionStorage.setItem('id_user',sessionData.id_user);
+    useEffect(() => {    // Verifica que haya un token de session y activa la verificacion para traer los datos
+        if (token) {
+            setCheckSessionTrigger(true); // Activa la verificación de sesión
         } else {
-            setAutenticado(false);
-            setdatauser(null);
-            sessionStorage.clear();
-            setCheckSessionTrigger(true);
+            setAutenticado(false);    
+            setCheckSessionTrigger(false);
         }
-    }, [sessionData]);
+    }, [token]);  
 
+    useEffect(() => { // si llegan los datos se setean en el sessionData y
+        if (sessionData) {   
+            if (sessionData.data) {    
+                sessionStorage.setItem('isadmin',sessionData.data.isAdmin)
+                setAutenticado(true);
+            } else if (sessionData.error) {
+                logout();
+                // Si el token ha expirado, se maneja el error
+                if (sessionData.error === "Token expirado") {
+                    alert("Tu sesión ha expirado.  redirigido al inicio.");
+                    logout();
+                }
+            }
+        }
+    }, [sessionData, error]);
     
-    /*establece la autenticacion cuando se loguea y se verifican los datos ingresados en la pagina de logina(nota: en la pagina de login se realiza un pedido para verificar y establecer la session)*/ 
-    const login = () => {
-        setAutenticado(true);
-        sessionStorage.setItem('autenticacion', autenticado);
+    /*establece la autenticacion cuando se loguea y se verifican los datos ingresados en la pagina de logina(nota: en la pagina de login se realiza un pedido para verificar y establecer la session), esta funcion se llama en "UserLogin.jsx"*/ 
+    const login = () => {  
+        setCheckSessionTrigger(true);   
     };
+
+
+   // const tokenA=sessionStorage.getItem('token')
+    
+    const checkAuthStatus = async () => {   // Verfica el estado de session, controla que la sesesion no haya expirado y actualiza el front en base a ello
+        if (token) {
+          try {
+            const decoded = jwtDecode(token); 
+            const currentTime = Date.now() / 1000; 
+           
+            if (decoded.exp < currentTime) {  // toma el tiempo que se establecio en el "payload " de  "UserLogin.php" y lo compara con el tiempo actual en segundos
+              setIsTokenValid(false); 
+              alert('sesión expirada. Redirigiendo a la página de inicio.');
+              logout(); // si no hay seseion ejecuta el logout
+            } else {
+              setIsTokenValid(true);
+              setAutenticado(true);
+            }
+          } catch (error) {
+            console.error('Error al decodificar el token:', error);
+            setIsTokenValid(false);
+            logout();
+          }
+        } else {
+          setIsTokenValid(false);
+          
+        }
+      };
+
    
-    const logout = async () => {
-        try {
-            await fetch('/api/logout.php', {
-                method: 'POST',
-            });
-            setAutenticado(false);
-            setdatauser(null);
-            sessionStorage.clear();
-            navigate('/home');      
-            location.reload();
-        } catch (error) {
-            console.error('Error al cerrar sesión', error);
-        }  
+    const logout = () => { 
+            
+            setAutenticado(false);     
+            sessionStorage.clear();      // limpiar las variables del sessionStorege
+            setCheckSessionTrigger(false);
+            navigate('/home');   
+            location.reload()                   //actualiza la pagina
+  
     };
     
-
+    
     return (
-        <AuthContext.Provider value={{ autenticado, datauser, login, logout }}>
+        <AuthContext.Provider value={{ autenticado, login, logout,sessionData, isTokenValid, checkAuthStatus,token }}>
             {children}
         </AuthContext.Provider>
     );

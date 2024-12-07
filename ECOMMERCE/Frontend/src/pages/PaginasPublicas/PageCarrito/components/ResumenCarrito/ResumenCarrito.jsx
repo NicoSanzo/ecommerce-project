@@ -20,14 +20,15 @@ export function ResumenCarrito() {
                         <h2 className="resumen">$ {subtotal.toFixed(2)}</h2>     
                     </div>
                    
-                   
+                   {Envio?
                     <div className="precios-container"> 
                         <h2 className="resumen">Envio:</h2>
                         <h2 className="resumen">$ {Envio.toFixed(2)}</h2>  
-                    </div>
+                    </div> : ""
+                    }
 
                 </div>
-                { MostrarDescuento===true && arrayProductsCarrito.length>0? 
+                { MostrarDescuento===true && arrayProductsCarrito.length>0 ? 
                     <div className="precios-container"> 
                         <h2 className="descuento-transfer">10%OFF:</h2>
                         <h2 className="descuento-transfer">$ -{cantidadDescuento.toFixed(2)}</h2>     

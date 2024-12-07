@@ -2,9 +2,11 @@
     require("./Checking.php");
     require("./Conexion.php");
 
+    $dataSession= autenticarUsuario();  
+    $id_user = $dataSession['id_user'];
 
   // Verificar si el usuario está autenticado
-if (!isset($_SESSION['id_user'])) {
+if (!isset($id_user)) {
     $response['error'] = 'No se ha iniciado sesión.';
     echo json_encode($response);
     exit();
@@ -21,7 +23,7 @@ $username = $_POST['usuario'];
 $mail = $_POST['mail'];
 $nombre = $_POST['nombre'];
 $apellido = $_POST['apellido'];
-$id_user = $_SESSION['id_user'];
+
 
 // Validación de correo electrónico
 if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {

@@ -1,5 +1,5 @@
 <?php
-
+    require("./Checking.php");
     require("./Conexion.php");
 
     $response['data'] = [];

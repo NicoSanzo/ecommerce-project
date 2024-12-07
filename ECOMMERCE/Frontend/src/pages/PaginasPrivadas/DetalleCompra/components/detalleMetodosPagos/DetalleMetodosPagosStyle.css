@@ -1,0 +1,76 @@
+.detalle-compra{
+
+    border: solid thin;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 35px;
+    min-width: 44%;
+    padding: 1%;
+    justify-content: left;
+    
+
+    .detalle-general{
+        
+        width: 100%;
+        padding: 1%;
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .fecha-numero{
+            font-size: 13px;
+            display: flex;
+            height: 20px;
+            align-items: center;
+            flex-direction: row;
+            box-shadow: 0 0 3px #aaaaaa;
+            border-radius: 5px;
+            width: fit-content;
+            margin-bottom: 2%;
+        }
+
+        .total-productos{
+            font-size: 15px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .descuento{
+            font-size: 12px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: #FF5EC0;
+        }
+        .total-final{
+
+            font-size: 20px;
+            display: flex;
+            font-weight: 900;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+      
+    }
+
+    .detalle-pago-container{
+        
+        padding: 1%;
+        .detalle-pago{
+        border: solid thin #dddddd;
+        border-radius: 5px;
+            
+        }
+    }
+
+    hr{
+        width: 100%;
+        margin: auto;
+    }
+
+
+}
+
+

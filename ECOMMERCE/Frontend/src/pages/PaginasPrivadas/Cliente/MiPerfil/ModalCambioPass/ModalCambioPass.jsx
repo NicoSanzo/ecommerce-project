@@ -42,7 +42,6 @@ export const ModalCambioPass = ({isOpen ,onClose ,data ,ActualizarPagina}) => {
       const handleSubmit = (event) => {
         event.preventDefault();
         const validationErrors = validate();
-        console.log(validationErrors)
         if (Object.keys(validationErrors).length === 0) {
 
             const formData = new FormData();
@@ -59,8 +58,8 @@ export const ModalCambioPass = ({isOpen ,onClose ,data ,ActualizarPagina}) => {
       
 
       const {data:modi_data,loading:loading_modi,error:error_modi}=useFetch("api/modi_contraseña.php","POST",FORMDATA,triggerFetchmod);
-      console.log(modi_data)
-      console.log(error_modi)
+      //console.log(modi_data)
+      //console.log(error_modi)
 
       useEffect(() => {
         if(modi_data && modi_data.data) {

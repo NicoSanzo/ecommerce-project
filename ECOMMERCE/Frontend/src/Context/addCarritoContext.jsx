@@ -6,7 +6,6 @@ const AddCarritoContext = createContext();
 
 export const ContextCarritoProvider = ({ children }) => {
 
-    
    
     const [arrayProductsCarrito, SetproductosToCarrito] = useState([]);
     const [cantidaditemsCarrito,setCantidadItemsCarrito] =useState(0);
@@ -74,7 +73,7 @@ export const ContextCarritoProvider = ({ children }) => {
       setSubtotal(subtotal);
       setsubTotalConDescuento(totalConDescuento)
       SetTotal(totalConDescuento + Envio);
-  }, [arrayProductsCarrito, porcentajeDescuento,Envio]);
+  }, [arrayProductsCarrito, porcentajeDescuento,Envio ]);
 
 
    

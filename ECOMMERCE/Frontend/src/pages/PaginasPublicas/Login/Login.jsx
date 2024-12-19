@@ -14,7 +14,6 @@ export const Login = ({ onClose, Registrate }) => {
     const [Loading, setLoading] = useState(false);
     
 
-
     const iniciarSesion = (e) => {
         e.preventDefault();
         setError("");
@@ -28,16 +27,17 @@ export const Login = ({ onClose, Registrate }) => {
         setEnviar(true);    
     };
 
-    const { data, loading, error } = useFetch('/api/UserLogin.php', 'POST', { username, password }, enviar);
 
-    
+
+    const { data, loading, error } = useFetch('./api/UserLogin.php', 'POST', { username, password }, enviar);
+
     useEffect(() => {
         
         if (data) {
             if (data.error) {
                 setError(data.error);      
             } else if (data.status === "success" ) {
-                sessionStorage.setItem('token', data.token);
+                localStorage.setItem('token', data.token);
                 login();
                 onClose();    //cierra el modal    
            }

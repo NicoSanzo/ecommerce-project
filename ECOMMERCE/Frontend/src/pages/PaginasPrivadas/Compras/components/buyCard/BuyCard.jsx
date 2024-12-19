@@ -8,7 +8,7 @@ import { LoadingComponente } from "../../../../../components/GenericLoadingCompo
 export function BuyCard({compraData}) {
 
     
-    const{fecha,opciones,EstadoPagoStyle,EstadoEntregaStyle,AbrirDetalleCompra,loading_data_detail}=UseBuyCard(compraData)
+    const{fecha,opciones,EstadoPagoStyle,EstadoEntregaStyle,AbrirDetalleCompra}=UseBuyCard(compraData)
 
 
     return (
@@ -24,7 +24,7 @@ export function BuyCard({compraData}) {
                 return(
                     <div className="compra-product-card" key={index} >
                        <div className="image-container">
-                           <img className="product-image" src={detalle.publicacion.imagen} alt="imagen-producto" />
+                           <img className="product-image" src={detalle.publicacion.imagen} alt="imagen-producto" loading="lazy"/>
                        </div>
                        <div className="product-description">
                            <h2 className="estado-entrega"
@@ -44,7 +44,7 @@ export function BuyCard({compraData}) {
                         <div className="buttons">
                            <a className="contacto" href="https://wa.me/5491138024906"  target="blank">
                                    <h2> Enviar Mensaje</h2>  
-                                   <img src={WppImage} alt="" />  
+                                   <img src={WppImage} alt="imagen whasts app" loading="lazy" />  
                            </a>     
                             <button onClick={AbrirDetalleCompra}>Ver compra</button>   
                         </div>

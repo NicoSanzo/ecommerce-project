@@ -6,12 +6,12 @@ import { UseCompraExitosa } from './useCompraExitosa';
 export function CompraExitosa() {
   
 
-  const {visible,checkedVisible,handleClose}=UseCompraExitosa();
+  const {visible,checkedVisible}=UseCompraExitosa();
 
 
   return (
     <>
-  
+   {
      <div className={`compra-container-opaco ${visible ? 'visible' : ''}`}>
           <div className={`compra-success-container ${visible ? 'visible' : ''}`}>
          <div className='compra-success-logo-container'>
@@ -32,7 +32,7 @@ export function CompraExitosa() {
          </div>*/}
        </div>
     </div>   
-
+  }
   </>
   );
 }

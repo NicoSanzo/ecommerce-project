@@ -1,6 +1,7 @@
 <?php
 require("./Conexion.php");
 
+
 $word=$_POST["searchData"];
 
 

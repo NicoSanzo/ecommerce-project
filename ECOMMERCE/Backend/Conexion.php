@@ -8,7 +8,7 @@ $database = "u505134983_OLIVIA_DESIGN";     // Nombre de la base de datos
 
 // Crear conexión
 $conn = mysqli_connect($host, $username, $password, $database);
-$response = [];
+
 if(!$conn){
     die("Conexión fallida" . mysqli_connect_error());
 }

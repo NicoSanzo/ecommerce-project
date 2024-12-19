@@ -17,6 +17,8 @@ export function Carrito() {
     const {cantidaditemsCarrito} =useAddCarrito();
     const {EliminarTodoElCarrito} =useAddCarrito();
 
+    
+
 
     return (
         <>

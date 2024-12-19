@@ -31,7 +31,8 @@ export const OrdenMenu = () =>{    //recibe como argumento una funcion de la pag
         setAbierto(false);            // al elegir una opcion lo transformo en falso para que se cierra la ventana
     };
     
-    const {data, loading, error} = useFetch('api/Productos.php', 'POST',{ inputOrder,searchData}, inputOrder);  // llamado de un hook personalizado que realiza conexion asincronica, le paso la URL,el metodo,el body(en este caso una variable), y un triger que le va a indicar que se ejecuta cada vez que cambia el valor de esa variable//
+    const {data, loading, error} = useFetch('/api/Productos.php', 'POST',{ inputOrder,searchData}, inputOrder);  // llamado de un hook personalizado que realiza conexion asincronica, le paso la URL,el metodo,el body(en este caso una variable), y un triger que le va a indicar que se ejecuta cada vez que cambia el valor de esa variable//
+
 
     useEffect(() => {
         setLoading(loading);

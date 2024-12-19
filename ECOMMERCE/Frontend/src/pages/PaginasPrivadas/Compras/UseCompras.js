@@ -16,10 +16,6 @@ const [triggerFetchCompras,setTriggerFetchCompras]=useState(false);
     }, []);
 
 
-    useEffect(() => {
-     
-    }, [DataCompras]);
-
     return (
         {
             DataCompras,

@@ -26,7 +26,7 @@ if (isset($_FILES['imagen'])) {
     $check = getimagesize($_FILES['imagen']['tmp_name']);
     if ($check !== false) {
         if (move_uploaded_file($_FILES['imagen']['tmp_name'], $targetFilePath)) {
-            $imageUrl = 'api/uploads/' . $imageName; // URL correcta
+            $imageUrl = '/api/uploads/' . $imageName; // URL correcta
         } else {
             http_response_code(500);
             $response['error'] = "No se subió la imagen";

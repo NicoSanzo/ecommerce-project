@@ -16,8 +16,7 @@ export const useFetch = (url, method = 'POST', body = null, triggerFetch = false
                         method,
                         body: body instanceof FormData ? body : new URLSearchParams(body).toString(),
                         credentials: "include",
-                        headers: {'authorization': 'Bearer ' + sessionStorage.getItem('token')}
-                        
+                        headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}
                         
                     };
 
@@ -25,7 +24,7 @@ export const useFetch = (url, method = 'POST', body = null, triggerFetch = false
                     if (!(body instanceof FormData)) {
                         options.headers = {
                             'Content-Type': 'application/x-www-form-urlencoded',
-                            'authorization': 'Bearer ' + sessionStorage.getItem('token')
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
                         };
                     }
 

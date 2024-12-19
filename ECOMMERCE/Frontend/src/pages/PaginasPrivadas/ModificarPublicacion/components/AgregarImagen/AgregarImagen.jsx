@@ -29,7 +29,7 @@ const handleRemoveImage = () => {
 
     return (
         <div className="image-upload">
-            <label className="custom-label">
+            <label className="custom-label-mod-pub">
                 <span>Selecciona una imagen</span>
                 <input
                     type="file"
@@ -41,7 +41,7 @@ const handleRemoveImage = () => {
             </label>
 
             {imageToview && (
-                <div className="image-container">
+                <div className="image-container-mod-pub">
                     <button className="remove-button" onClick={handleRemoveImage}>
                         ✖
                     </button>

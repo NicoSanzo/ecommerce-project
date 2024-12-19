@@ -10,14 +10,14 @@
     align-items: center;
 }
 
-.custom-label {
+.custom-label-mod-pub {
     cursor: pointer;
     display: block;
 }
 
 .file-input { display: none; }
 
-.image-container {
+.image-container-mod-pub {
     position: relative;
     margin-top: 10px;
     display: flex; 
@@ -32,7 +32,7 @@
 }
 
 
-.image-container img {
+.image-container-mod-pub img {
     width: 120px;
     height: 120px;
     border-radius: 5px;

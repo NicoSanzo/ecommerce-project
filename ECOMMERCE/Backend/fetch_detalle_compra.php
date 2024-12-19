@@ -18,8 +18,6 @@
     $numero_operacion = $_POST['numero_operacion'];
 
 
-
-
     $query = "SELECT * FROM operacion WHERE numero = '$numero_operacion'";
     $result = mysqli_query($conn, $query);
 
@@ -37,7 +35,6 @@
         echo json_encode($response);
         exit();
     }
-
 
     $query = "
         SELECT * FROM det_oper d
@@ -72,6 +69,8 @@
     $object->external_reference = $operacion['external_reference'];
     $object->estado_pago = $operacion['estado_pago'];
     $object->estado_compra = $operacion['estado_compra'];
+    $object->fecha_entrega = $operacion['fecha_entrega'];
+    $object->fecha_pago = $operacion['fecha_pago'];
     if ($operacion['factura']==null){
         $object->factura = $operacion['factura'];
     }else{

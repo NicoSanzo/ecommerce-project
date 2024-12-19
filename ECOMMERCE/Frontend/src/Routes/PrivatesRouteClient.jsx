@@ -4,7 +4,7 @@ import { useAuth } from '../Context/authContext';
 
 export const PrivateRouteClient = () => {
   const { checkAuthStatus,isTokenValid} = useAuth();
-  const dataAdmin=sessionStorage.getItem('isadmin');
+  const dataAdmin=localStorage.getItem('isadmin');
   
   useEffect(() => {
     checkAuthStatus(); // Llamamos a una función que verifica el token y el rol de usuario

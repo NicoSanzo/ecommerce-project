@@ -20,6 +20,8 @@ import { PageCarrito } from './pages/PaginasPublicas/PageCarrito/PageCarrito';
 import { Compras } from './pages/PaginasPrivadas/Compras/Compras';
 import { CompraExitosa } from './pages/PaginasPrivadas/CompraExitosa/CompraExitosa';
 import { DetalleCompra } from './pages/PaginasPrivadas/DetalleCompra/DetalleCompra';
+import { Ventas } from './pages/PaginasPrivadas/Ventas/Ventas';
+import { DetalleVenta } from './pages/PaginasPrivadas/DetalleVenta/DetalleVenta';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -40,11 +42,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             <Route element={<PrivateRouteAdmin />}>
               <Route path="/AgregarProducto" element={<AgregarProducto />} />
               <Route path="/Publicaciones" element={<Publicaciones />} />
+              <Route path="/Ventas" element={<Ventas />}/>
+              <Route path="Ventas/Detalle" element={<DetalleVenta />} />
             </Route>
             <Route element={<PrivateRouteClient />}>
               <Route path="/Miperfil" element={<MiPerfil />} />    
               <Route path="/compras" element={<Compras />}/>
-              <Route path="/detalle" element={<DetalleCompra />} />               
+              <Route path="compras/detalle" element={<DetalleCompra />} />               
               <Route path="/CompraExitosa" element={<CompraExitosa />} />        
             </Route>
           </Routes>

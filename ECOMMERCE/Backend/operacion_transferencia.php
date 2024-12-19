@@ -4,7 +4,6 @@
     $dataSession= autenticarUsuario();   // es una funcion que se encuentra en checkign.php //toma los datos de usuario direco de la sesion
     $userid = $dataSession['id_user'];
 
-   
 
     if(!verificarVariables()){
         $response['error'] = "No se obtuvo la información necesaria para poder realizar la operación.";
@@ -54,7 +53,7 @@
     
     //CARGA DE LA OPERACION
 
-    $query = "INSERT INTO operacion VALUES (NULL, '$total', '$monto_envio', '$userid', '$fecha', NULL, '$forma_envio', '$metodo_pago', 'NULL', '$estado_pago', '$estado_compra', NULL, NULL)";
+    $query = "INSERT INTO operacion VALUES (NULL, '$total', '$monto_envio', '$userid', '$fecha', NULL, '$forma_envio', '$metodo_pago', NULL, '$estado_pago', '$estado_compra', NULL, NULL, NULL, NULL, NULL)";
     $result = mysqli_query($conn, $query);
 
     if(!$result){

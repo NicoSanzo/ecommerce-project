@@ -42,7 +42,8 @@ export function UseCompraExitosa() {
 
     return (
         {visible,
-        checkedVisible,handleClose
+        checkedVisible,
+        handleClose
         }
             
         

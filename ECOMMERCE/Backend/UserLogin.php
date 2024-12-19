@@ -1,6 +1,6 @@
 <?php
 require("./Conexion.php");
-require_once '../../vendor/autoload.php'; 
+require_once ('../../vendor/autoload.php'); 
 
 use \Firebase\JWT\JWT;
 
@@ -42,7 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             $payload = array(
                 "iss" => "localhost",  // Emisor del token
                 "iat" => time(),       // Fecha de emisión
-                "exp" => time() + 5000, // Expiración del token (1 hora)
+                "exp" => time() + 7200, // Expiración del token (2 horas)
                 "id_user" => $usuario['id'],
                 "username" => $usuario['username'],
                 "nombre" => $usuario['nombre'],

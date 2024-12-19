@@ -25,7 +25,7 @@ export const AdminMenu = ({user}) =>{    //recibe como argumento una funcion de 
                         <img className="downarrow" src={downArrow}></img>
                     </div>
                             <ul className="Desplegable">
-                                <li >Ventas</li>
+                                <li ><Link to={"/Ventas"}>Ventas</Link></li>
                                 <li>Resumen</li>
                                 <li> <Link to={"/AgregarProducto"}>Agregar Producto</Link> </li>
                                 <li> <Link to={"/Publicaciones"}>Publicaciones</Link> </li>

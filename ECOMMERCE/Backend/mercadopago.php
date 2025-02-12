@@ -17,7 +17,7 @@
     $cliente = new PaymentClient();
     $idempotency_key = uniqid();
 
-    MercadoPagoConfig::setAccessToken("");
+    MercadoPagoConfig::setAccessToken(""); // falta el acces token de MP ( se encuentra en Mercadopago Developer)
     //MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
 
     $client = new PreferenceClient();

@@ -17,7 +17,7 @@
     $cliente = new PaymentClient();
     $idempotency_key = uniqid();
 
-    MercadoPagoConfig::setAccessToken("APP_USR-4438792683199166-111319-32c637e4aa108f2faec5148c0b1ce442-728183787");
+    MercadoPagoConfig::setAccessToken("");
     //MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
 
     $client = new PreferenceClient();
